@@ -1,6 +1,5 @@
-import { Button, Input } from "@mantine/core";
+import { Button, Input, Image, Box } from "@mantine/core";
 import { Flex } from "@mantine/core";
-import "tailwindcss";
 import imdbLogo from "../assets/imdb-logo.png";
 import {
   SignOutIcon,
@@ -9,30 +8,30 @@ import {
 const Header = () => {
   return (
     <Flex
-      mih={50}
+      mih={"1vh"}
       gap="xl"
       justify="center"
       align="center"
       direction="row"
       wrap="wrap"
     >
-      <div>
-        <img src={imdbLogo} className="object-contain w-[5vw] rounded-md" />
-      </div>
-      <div className="w-[70vw]">
+      <Box>
+        <Image src={imdbLogo} w={"3.5vw"} radius="sm" />
+      </Box>
+      <Box className="w-[70vw]">
         <Input
           variant="filled"
-          size="md"
+          size="xs"
           placeholder="Search"
-          rightSection={<MagnifyingGlassIcon size={"2vw"} weight="light" />}
+          rightSection={<MagnifyingGlassIcon size={"1.5vw"} weight="light" />}
         />
-      </div>
-      <div>
+      </Box>
+      <Box className="hidden md:block">
         <Button variant="transparent">
-          <SignOutIcon size={"2vw"} weight="light" />
+          <SignOutIcon size={"1.5vw"} weight="light"/>
           Logout
         </Button>
-      </div>
+      </Box>
     </Flex>
   );
 };

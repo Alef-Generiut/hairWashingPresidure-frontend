@@ -1,18 +1,22 @@
 import "./App.css";
-import Header from "../components/header";
-import { Flex } from "@mantine/core";
+import Header from "../components/Header";
+import { AppShell, Flex } from "@mantine/core";
+import HomePageMovie from "../components/HomePageMovie";
 function App() {
   return (
-    <Flex
-      mih={50}
-      gap="xl"
-      justify="center"
-      align="center"
-      direction="row"
-      wrap="wrap"
-    >
-      <Header />
-    </Flex>
+    <AppShell padding="md">
+      <AppShell.Header>
+        <Flex mih={50} justify="center" align="center" direction="row">
+          <Header />
+        </Flex>
+      </AppShell.Header>
+
+      <AppShell.Main>
+        <Flex justify="center" align="center" direction="row">
+          <HomePageMovie />
+        </Flex>
+      </AppShell.Main>
+    </AppShell>
   );
 }
 
