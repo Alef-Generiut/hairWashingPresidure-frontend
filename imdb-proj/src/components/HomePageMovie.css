@@ -1,0 +1,19 @@
+@import "tailwindcss";
+
+@layer components {
+  .headlineMovie {
+    @apply relative w-[70vw] h-96 mx-auto flex items-end justify-center rounded-md -z-10 mt-[13vh];
+  }
+  .lowTaperFade {
+    @apply absolute -z-10 w-[85vw] h-[70vh] rounded-md bg-yellow-400/60 blur-[100px] -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2;
+  }
+  .imageHolder {
+    @apply absolute inset-0 w-full h-full rounded-md overflow-hidden z-10;
+  }
+  .frontImage {
+    @apply w-full h-full object-cover mask-[linear-gradient(to_top,transparent_0%,black_30%)];
+  }
+  .textHolder {
+    @apply relative z-30 p-6;
+  }
+}
