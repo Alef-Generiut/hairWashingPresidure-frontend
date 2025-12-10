@@ -1,0 +1,7 @@
+@import "tailwindcss";
+
+@layer components {
+  .sideImage {
+    @apply w-full h-full object-cover rounded-md;
+  }
+}

@@ -1,0 +1,16 @@
+@import "tailwindcss";
+
+@layer components {
+  .card {
+    @apply max-w-md bg-gray-900 p-6 relative z-50;
+  }
+  .closeButton {
+    @apply absolute top-3 right-3 text-gray-400 hover:text-gray-100;
+  }
+  .textEreaInput {
+    @apply bg-gray-800 border border-gray-700 text-gray-200 placeholder-gray-500;
+  }
+  .submitButton {
+    @apply bg-yellow-400 hover:bg-yellow-500 text-black;
+  }
+}
