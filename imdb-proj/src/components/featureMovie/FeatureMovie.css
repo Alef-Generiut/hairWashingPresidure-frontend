@@ -1,17 +1,25 @@
 @import "tailwindcss";
 
 @layer components {
+  .mainRow {
+    @apply relative w-full h-full flex;
+  }
+  .featureMovieGroup {
+    @apply relative flex-1 h-full;
+  }
   .headlineMovie {
     @apply relative w-[70vw] h-[70vh] flex items-end justify-center rounded-md -z-10 mt-[13vh];
   }
-
+  .features {
+    @apply pl-[1vw];
+  }
   .lowTaperFade {
     @apply absolute -z-10 w-[85vw] h-[70vh] rounded-md bg-yellow-400/60 
          blur-[100px] -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2;
   }
 
   .imageHolder {
-    @apply absolute inset-0 rounded-md overflow-hidden z-10;
+    @apply absolute inset-0 rounded-md overflow-hidden z-10 h-[70vh];
   }
 
   .frontImage {
@@ -31,6 +39,6 @@
   }
 
   .movieTitle {
-    @apply   -translate-y-[5vh];
+    @apply -translate-y-[5vh];
   }
 }
