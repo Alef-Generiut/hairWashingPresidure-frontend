@@ -1,7 +1,7 @@
 import "./App.css";
 import Header from "../components/Header";
 import { AppShell, Flex } from "@mantine/core";
-import HomePageMovie from "../components/HomePageMovie";
+import HomePageMovie from "../components/featureMovie/FeatureMovie";
 function App() {
   return (
     <AppShell padding="md">

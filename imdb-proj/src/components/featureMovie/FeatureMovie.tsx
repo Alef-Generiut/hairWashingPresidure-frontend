@@ -1,12 +1,13 @@
-import imageTemp from "../assets/Untitled.jpg";
-import "./HomePageMovie.css";
+import imageTemp from "../../assets/eternal-sunshine-of-the-spotless-mind.jpg";
+import "./FeatureMovie.css";
 import { Box, Text, Image } from "@mantine/core";
-import SideImage from "./SideImage";
-
+import image from "../../assets/enternal-logo.jpg";
+import FeatureMovieDesc from "../featureMovieDesc/FeatureMovieDesc.tsx";
 const HomePageMovie = () => {
   return (
     <Box className="headlineMovie">
       <Box className="lowTaperFade" />
+
       <Box className="imageHolder">
         <Image
           src={imageTemp}
@@ -16,11 +17,8 @@ const HomePageMovie = () => {
         />
       </Box>
 
-      <Box className="textHolder">
-        <SideImage />
-        <Text size="xl">Hello World</Text>
-        <Text>Some description here</Text>
-      </Box>
+      <FeatureMovieDesc image={image} text={'Eternal Sunshine Of The Spotless Mind'} />
+      
     </Box>
   );
 };
