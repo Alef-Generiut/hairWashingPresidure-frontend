@@ -1,11 +1,11 @@
 import { Box, Image, Text } from "@mantine/core";
 
-interface FeaturedMovieDesc {
+interface featureMovieDesc {
   image: string;
   text: string;
 }
 
-const FeatureMovieDesc = ({ image, text }: FeaturedMovieDesc) => {
+const FeatureMovieDesc = ({ image, text }: featureMovieDesc) => {
   return (
     <Box className="textHolder">
       <Box className="sideImageHolder">

@@ -10,21 +10,21 @@ import {
 } from "@mantine/core";
 import { PlusIcon } from "@phosphor-icons/react";
 import { StarIcon } from "@phosphor-icons/react";
-interface ReviewPopup {
+interface reviewPopup {
   title?: string;
-  avgRating?: number;
 }
-export function ReviewPopup({
+const ReviewPopup = ({
   title = "eternal sunshine of the spottles mind",
-  avgRating = 8.7,
-}: ReviewPopup) {
+}: reviewPopup) => {
   const [rating, setRating] = useState(0);
   const [reviewText, setReviewText] = useState("");
 
   return (
-    <Popover width={300} trapFocus position="bottom" withArrow shadow="md">
+    <Popover width={300} trapFocus position="bottom" withArrow shadow="md" >
       <Popover.Target>
-        <StarIcon /> {avgRating}
+        <button className="flex row-auto">
+          <StarIcon className="mt-[0.7vh]"/> rate
+        </button>
       </Popover.Target>
       <Popover.Dropdown>
         <Card withBorder radius="md" shadow="md" className="card">
@@ -77,4 +77,5 @@ export function ReviewPopup({
       </Popover.Dropdown>
     </Popover>
   );
-}
+};
+export default ReviewPopup;
