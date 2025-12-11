@@ -3,7 +3,7 @@ import Header from "../components/Header";
 import { AppShell, Flex, Box, Text } from "@mantine/core";
 import HomePageMovie from "../components/mainPage/featureMovie/FeatureMovie";
 import MovieRecomm from "../components/movieRecomm/movieRecomm";
-function App() {
+const App = () => {
   return (
     <AppShell padding="md">
       <AppShell.Header>
@@ -34,6 +34,6 @@ function App() {
       </AppShell.Main>
     </AppShell>
   );
-}
+};
 
 export default App;
