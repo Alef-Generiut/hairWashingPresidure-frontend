@@ -12,6 +12,7 @@ export type movie = {
   length: number;
   plot: string;
   releaseYear: number;
+  genres: genre[];
 };
 export type movieReview = {
   id: string;

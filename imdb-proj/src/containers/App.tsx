@@ -3,6 +3,22 @@ import Header from "../components/Header";
 import { AppShell, Flex, Box, Text } from "@mantine/core";
 import HomePageMovie from "../components/mainPage/featureMovie/FeatureMovie";
 import MovieRecomm from "../components/movieRecomm/movieRecomm";
+import { movie } from "../types/types";
+import Overview from "../components/moviePage/OverView";
+const movieTest: movie = {
+  id: "asd",
+  name: "Eternal Sunshine of the Spotless Mind",
+  posterPhoto: "../assets/enternal-logo.jpg",
+  bgPhoto: "../assets/eternal-sunshine-of-the-spotless-mind.jpg",
+  length: 190,
+  plot: "adasd sdfi asdi fasi dfao isdf aius dfai sud fhpi",
+  releaseYear: 1999,
+  genres: [
+    {id:1, name: "Drama" },
+    {id:2, name: "Romance" },
+    {id:3, name: "Sci-Fi" }
+  ]
+};
 const App = () => {
   return (
     <AppShell padding="md">
@@ -31,7 +47,9 @@ const App = () => {
             <MovieRecomm />
           </Flex>
         </Box>
+        <Overview movie={movieTest}/>
       </AppShell.Main>
+      
     </AppShell>
   );
 };
