@@ -6,11 +6,6 @@ import { MantineProvider, createTheme } from "@mantine/core";
 import "@mantine/core/styles.css";
 const theme = createTheme({
   components: {
-    Text: {
-      defaultProps: {
-        color: "rgba(227, 227, 225, 1)",
-      },
-    },
     Button: {
       defaultProps: {
         c: "rgba(227, 227, 225, 1)",

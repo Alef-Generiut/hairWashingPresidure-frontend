@@ -1,0 +1,16 @@
+@import "tailwindcss";
+
+@layer components {
+  .moreLike {
+    @apply text-left text-2xl mb-6 font-bold;
+  }
+  .tableOfContentHolder {
+    @apply border-l border-gray-700 pl-5 h-fit;
+  }
+  .tableOfContentGeneral {
+    @apply relative flex items-center pl-3 mb-3;
+  }
+  .tableOfContentActive {
+    @apply font-semibold  before:absolute before:left-0 before:top-0 before:h-full before:w-1 before:rounded before:bg-yellow-400;
+  }
+}
