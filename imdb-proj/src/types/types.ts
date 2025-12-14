@@ -17,8 +17,9 @@ export type movie = {
 export type movieReview = {
   id: string;
   rating: number;
-  plot: string;
-  userId: string;
+  title: string;
+  content: string;
+  username: string;
   movieId: string;
   createdAt: Date;
 };
