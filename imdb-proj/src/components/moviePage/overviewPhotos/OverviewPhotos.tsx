@@ -1,6 +1,7 @@
 import { Box, Image, Flex } from "@mantine/core";
-import movieImage from "../../assets/eternal-sunshine-of-the-spotless-mind.jpg";
-import posterImage from "../../assets/enternal-logo.jpg";
+import movieImage from "../../../assets/eternal-sunshine-of-the-spotless-mind.jpg";
+import posterImage from "../../../assets/enternal-logo.jpg";
+import "./overviewPhotos.css"
 
 interface overviewPhotos {
   posterImage: string;
@@ -10,18 +11,18 @@ interface overviewPhotos {
 const OverviewPhotos = (/*{ posterImage, movieImage }: overviewPhotos*/) => {
   return (
     <Flex className="w-full gap-6">
-      <Box className="w-[22vw] h-[60vh] overflow-hidden rounded-lg shadow-lg">
+      <Box className="posterImage">
         <Image
           src={posterImage}
-          className="w-full h-full object-cover"
+          className="image"
           radius="md"
         />
       </Box>
 
-      <Box className="flex-1 h-[60vh] overflow-hidden rounded-lg shadow-lg">
+      <Box className="movieImage">
         <Image
           src={movieImage}
-          className="w-full h-full object-cover"
+          className="image"
           radius="md"
         />
       </Box>

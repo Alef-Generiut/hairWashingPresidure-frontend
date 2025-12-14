@@ -2,7 +2,7 @@ import { Box } from "@mantine/core";
 import { movie } from "../../types/types";
 
 import OverviewHead from "./overviewHead/OverviewHead";
-import OverviewPhotos from "./OverviewPhotos";
+import OverviewPhotos from "./overviewPhotos/OverviewPhotos";
 import OverviewDesc from "./overviewDesc/OverviewDesc";
 
 interface overview {
