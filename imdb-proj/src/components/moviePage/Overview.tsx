@@ -3,7 +3,7 @@ import { movie } from "../../types/types";
 
 import OverviewHead from "./OverviewHead";
 import OverviewPhotos from "./OverviewPhotos";
-import OverviewDesc from "./OverviewDesc";
+import OverviewDesc from "./overviewDesc/OverviewDesc";
 
 interface overview {
   movie: movie;

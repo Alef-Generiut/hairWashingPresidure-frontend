@@ -4,7 +4,7 @@ import { AppShell, Flex, Box, Text } from "@mantine/core";
 import HomePageMovie from "../components/mainPage/featureMovie/FeatureMovie";
 import MovieRecomm from "../components/movieRecomm/movieRecomm";
 import { movie } from "../types/types";
-import Overview from "../components/moviePage/OverView";
+import Overview from "../components/moviePage/Overview";
 const movieTest: movie = {
   id: "asd",
   name: "Eternal Sunshine of the Spotless Mind",
