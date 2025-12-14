@@ -1,0 +1,16 @@
+@import "tailwindcss";
+
+@layer components {
+  .movieName {
+    @apply text-4xl font-semibold mb-1;
+  }
+  .movieLength {
+    @apply text-sm flex items-center;
+  }
+  .reviewPopup {
+    @apply px-4 py-2 bg-white/5 rounded-lg cursor-pointer space-x-2 inset-shadow-sm/50;
+  }
+  .rating {
+    @apply px-4 py-2 bg-white/10 rounded-lg cursor-pointer space-x-2 inset-shadow-sm/50;
+  }
+}

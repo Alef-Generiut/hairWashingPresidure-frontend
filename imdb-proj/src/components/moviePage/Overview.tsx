@@ -1,7 +1,7 @@
-import { Box, Image, Flex } from "@mantine/core";
+import { Box } from "@mantine/core";
 import { movie } from "../../types/types";
 
-import OverviewHead from "./OverviewHead";
+import OverviewHead from "./overviewHead/OverviewHead";
 import OverviewPhotos from "./OverviewPhotos";
 import OverviewDesc from "./overviewDesc/OverviewDesc";
 
