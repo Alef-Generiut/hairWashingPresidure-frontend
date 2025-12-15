@@ -4,7 +4,7 @@ import { AppShell, Flex, Box, Text } from "@mantine/core";
 import HomePageMovie from "../components/mainPage/featureMovie/FeatureMovie";
 import MovieRecomm from "../components/movieRecomm/movieRecomm";
 import { movie } from "../types/types";
-import Overview from "../components/moviePage/overview/Overview";
+import MoviePage from "../components/moviePage/moviePage/MoviePage";
 const movieTest: movie = {
   id: "asd",
   name: "Eternal Sunshine of the Spotless Mind",
@@ -47,7 +47,7 @@ const App = () => {
             <MovieRecomm />
           </Flex>
         </Box>
-        <Overview movie={movieTest} />
+        <MoviePage movie={movieTest} />
       </AppShell.Main>
     </AppShell>
   );
