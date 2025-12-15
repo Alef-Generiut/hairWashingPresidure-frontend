@@ -7,7 +7,6 @@ import FeatureChoice from "../featureChoice/FeatureChoice.tsx";
 const HomePageMovie = () => {
   return (
     <Box className="headlineMovie">
-      <Box className="lowTaperFade" />
 
       <Box className="mainRow">
         <Box className="featureMovieGroup">

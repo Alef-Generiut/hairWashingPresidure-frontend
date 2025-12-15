@@ -5,6 +5,7 @@ import HomePageMovie from "../components/mainPage/featureMovie/FeatureMovie";
 import MovieRecomm from "../components/movieRecomm/movieRecomm";
 import { movie } from "../types/types";
 import MoviePage from "../components/moviePage/moviePage/MoviePage";
+import LoginSignUp from "../components/LoginSignUp/LoginSignUp";
 const movieTest: movie = {
   id: "asd",
   name: "Eternal Sunshine of the Spotless Mind",
@@ -21,7 +22,7 @@ const movieTest: movie = {
 };
 const App = () => {
   return (
-    <AppShell padding="md">
+    <AppShell>
       <AppShell.Header>
         <Flex mih={50} justify="center" align="center" direction="row">
           <Header />
@@ -29,6 +30,9 @@ const App = () => {
       </AppShell.Header>
 
       <AppShell.Main>
+        {/* <LoginSignUp/> */}
+        <Box className="lowTaperFade" />
+
         <Flex justify="center" align="center" direction="column">
           <HomePageMovie />
         </Flex>

@@ -1,3 +1,12 @@
+@import "tailwindcss";
+
+@layer components {
+  .lowTaperFade {
+    @apply absolute -z-10 w-[85vw] h-[70vh] rounded-md bg-yellow-400/60 
+         blur-[100px] -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2;
+  }
+}
+
 #root {
   margin: 0 auto;
   text-align: center;
@@ -17,6 +26,6 @@
   scrollbar-width: none; /* Firefox */
   -ms-overflow-style: none; /* IE and Edge */
 }
-html{
+html {
   scroll-behavior: smooth;
 }

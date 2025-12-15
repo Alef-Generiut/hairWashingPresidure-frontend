@@ -27,7 +27,7 @@ const mockReview: movieReview = {
 
 const mockRecommendations = Array.from({ length: 5 });
 
-const Overview = ({ movie }: OverviewProps) => {
+const MoviePage = ({ movie }: OverviewProps) => {
   return (
     <Flex gap="xl" className="p-6">
       <Box flex={1}>
@@ -108,4 +108,4 @@ const MemoizedUserReview = React.memo(UserReview);
 const MemoizedMovieRecomm = React.memo(MovieRecomm);
 const MemoizedOverviewPhotos = React.memo(OverviewPhotos);
 
-export default React.memo(Overview);
+export default React.memo(MoviePage);

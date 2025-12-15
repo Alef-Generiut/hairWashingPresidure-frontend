@@ -23,7 +23,7 @@ const ReviewPopup = ({
     <Popover width={300} trapFocus position="bottom" withArrow shadow="md" >
       <Popover.Target>
         <button className="flex row-auto">
-          <StarIcon className="mt-[0.7vh]"/> rate
+          <StarIcon className="mt-[0.7vh]"/> Rate
         </button>
       </Popover.Target>
       <Popover.Dropdown>
