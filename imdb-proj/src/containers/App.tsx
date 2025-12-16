@@ -1,25 +1,15 @@
 import "./App.css";
 import Header from "../components/Header";
-import { AppShell, Flex, Box, Text } from "@mantine/core";
-import HomePageMovie from "../components/mainPage/featureMovie/FeatureMovie";
-import MovieRecomm from "../components/movieRecomm/movieRecomm";
-import { movie } from "../types/types";
+import { AppShell, Flex } from "@mantine/core";
+import MainPage from "../components/mainPage/mainPage/MainPage";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import MoviePage from "../components/moviePage/moviePage/MoviePage";
-import LoginSignUp from "../components/LoginSignUp/LoginSignUp";
-const movieTest: movie = {
-  id: "asd",
-  name: "Eternal Sunshine of the Spotless Mind",
-  posterPhoto: "../assets/enternal-logo.jpg",
-  bgPhoto: "../assets/eternal-sunshine-of-the-spotless-mind.jpg",
-  length: 190,
-  plot: "adasd sdfi asdi fasi dfao isdf aius dfai sud fhpi",
-  releaseYear: 1999,
-  genres: [
-    { id: 1, name: "Drama" },
-    { id: 2, name: "Romance" },
-    { id: 3, name: "Sci-Fi" },
-  ],
-};
+import { movies } from "../hardCodedData";
+
+const router = createBrowserRouter([
+  { path: "/", element: <MainPage /> },
+  { path: "movie/:movieName", element: <MoviePage movie={movies[0]} /> },
+]);
 const App = () => {
   return (
     <AppShell>
@@ -30,28 +20,7 @@ const App = () => {
       </AppShell.Header>
 
       <AppShell.Main>
-        {/* <LoginSignUp/> */}
-        <Box className="lowTaperFade" />
-
-        <Flex justify="center" align="center" direction="column">
-          <HomePageMovie />
-        </Flex>
-        <Box className="pt-[60vh] space-x-[1vw] ">
-          <Box className="mr-[56vw] mb-[3vh]">
-            <Text>
-              <span className="text-yellow-400 mr-4">●</span>Picked For You
-            </Text>
-          </Box>
-          <Flex justify="center" align="center" direction="row">
-            <MovieRecomm />
-            <MovieRecomm />
-            <MovieRecomm />
-            <MovieRecomm />
-            <MovieRecomm />
-            <MovieRecomm />
-          </Flex>
-        </Box>
-        <MoviePage movie={movieTest} />
+        <RouterProvider router={router} />
       </AppShell.Main>
     </AppShell>
   );

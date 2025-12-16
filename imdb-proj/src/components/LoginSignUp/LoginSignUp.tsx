@@ -119,7 +119,7 @@ const LoginSignUp = () => {
               )}
 
               <Button
-                color="#ffd43b"
+                color="yellow.5"
                 c="black"
                 fullWidth
                 onClick={handleSubmit}

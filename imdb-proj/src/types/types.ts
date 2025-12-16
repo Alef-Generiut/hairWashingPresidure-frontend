@@ -13,6 +13,7 @@ export type movie = {
   plot: string;
   releaseYear: number;
   genres: genre[];
+  avgRating:number;
 };
 export type movieReview = {
   id: string;

@@ -4,10 +4,10 @@ import { Box, Image, Text } from "@mantine/core";
 import image from "../../../assets/enternal-logo.jpg";
 import FeatureMovieDesc from "../featureMovieDesc/FeatureMovieDesc.tsx";
 import FeatureChoice from "../featureChoice/FeatureChoice.tsx";
+import { movies } from "../../../hardCodedData.ts";
 const HomePageMovie = () => {
   return (
     <Box className="headlineMovie">
-
       <Box className="mainRow">
         <Box className="featureMovieGroup">
           <Box className="imageHolder">
@@ -33,9 +33,9 @@ const HomePageMovie = () => {
             </Text>
           </Box>
           <Box>
-            <FeatureChoice />
-            <FeatureChoice />
-            <FeatureChoice />
+            {movies.slice(0, 3).map((movie) => (
+              <FeatureChoice movieName={movie.name} />
+            ))}
           </Box>
         </Box>
       </Box>

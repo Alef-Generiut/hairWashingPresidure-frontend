@@ -4,4 +4,22 @@
   .sideImage {
     @apply w-full h-full object-cover rounded-md;
   }
+  .recommContainer {
+    @apply p-2 bg-neutral-800 rounded-2xl w-[11vw] h-[40vh];
+  }
+  .image {
+    @apply w-full h-full object-cover;
+  }
+  .imgHolder {
+    @apply overflow-hidden w-full;
+  }
+  .recommName {
+    @apply truncate mt-2 font-medium;
+  }
+  .recommText {
+    @apply flex items-center space-x-2;
+  }
+  .recommRating {
+    @apply flex items-center gap-1;
+  }
 }

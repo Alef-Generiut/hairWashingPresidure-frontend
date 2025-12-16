@@ -96,7 +96,7 @@ const MoviePage = ({ movie }: OverviewProps) => {
               ${active ? "tableOfContentActive" : ""}
             `,
             children: data.value,
-            c: active ? "yellow" : undefined,
+            c: active ? "yellow.5" : undefined,
             bg: "transparent",
           })}
         />

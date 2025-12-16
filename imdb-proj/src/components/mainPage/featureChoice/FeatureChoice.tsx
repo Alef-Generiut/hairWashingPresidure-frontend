@@ -3,7 +3,13 @@ import image from "../../../assets/enternal-logo.jpg";
 import { Box, Image, Text } from "@mantine/core";
 import "./FeatureChoice.css";
 
-const FeatureChoice = () => {
+interface featureChoice {
+  bgPhoto?:string
+  posterPhoto?:string
+  movieName?:string
+}
+
+const FeatureChoice = ({movieName="placeHolder"}:featureChoice) => {
   return (
     <Box className="featuredCard">
       <Box className="featuredBg">
@@ -15,7 +21,7 @@ const FeatureChoice = () => {
           <Image src={image} className="posterImg" radius="md" fit="cover" />
         </Box>
         <Text size="sm" className="featuredTitle">
-          'Eternal Sunshine Of The Spotless Mind'
+          {movieName}
         </Text>
       </Box>
     </Box>
