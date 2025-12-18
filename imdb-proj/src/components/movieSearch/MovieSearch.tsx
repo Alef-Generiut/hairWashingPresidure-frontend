@@ -2,6 +2,7 @@ import { Box, Flex, Title } from "@mantine/core";
 import { useSearchParams } from "react-router-dom";
 import { movies } from "../../hardCodedData";
 import MovieRecomm from "../movieRecomm/movieRecomm";
+import "./movieSearch.css"
 
 const MovieSearch = () => {
   const [searchParams] = useSearchParams();
