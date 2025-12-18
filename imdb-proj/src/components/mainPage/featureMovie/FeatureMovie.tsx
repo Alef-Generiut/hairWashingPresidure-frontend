@@ -16,7 +16,11 @@ const HomePageMovie = ({ movie }: homePageMovie) => {
   return (
     <Box className="headlineMovie">
       <Box className="mainRow">
-        <Box className="featureMovieGroup" component={Link} to={`/movie/${movie.id}`}>
+        <Box
+          component={Link}
+          to={`/movie/${movie.id}`}
+          className="featureMovieGroup"
+        >
           <Box>
             <Box className="imageHolder">
               <Image
@@ -40,7 +44,7 @@ const HomePageMovie = ({ movie }: homePageMovie) => {
           </Box>
           <Box>
             {movies.slice(0, 3).map((movie) => (
-              <FeatureChoice movieName={movie.name} movieId={movie.id}/>
+              <FeatureChoice movieName={movie.name} movieId={movie.id} />
             ))}
           </Box>
         </Box>
