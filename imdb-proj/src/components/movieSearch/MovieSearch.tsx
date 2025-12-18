@@ -13,7 +13,7 @@ const MovieSearch = () => {
   return (
     <Box>
       <Box className="lowTaperFade" />;
-      <Box className="relative  flex items-end justify-center rounded-md -z-10 mt-[10vh] pb-5">
+      <Box className="titleContainer">
         <Title>{`results for: ${search}`}</Title>
       </Box>
       <Flex

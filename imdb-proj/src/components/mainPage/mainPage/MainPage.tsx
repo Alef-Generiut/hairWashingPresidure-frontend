@@ -19,7 +19,6 @@ const MainPage = () => {
             <span className="text-yellow-400 mr-4">●</span>Picked For You
           </Text>
         </Box>
-
         <Flex
           justify="center"
           align="center"

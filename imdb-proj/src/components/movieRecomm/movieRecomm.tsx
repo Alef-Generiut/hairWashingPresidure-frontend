@@ -30,11 +30,10 @@ const MovieRecomm = ({
         </Text>
       </Box>
       <Box className="recommText ">
-        <Box className="flex items-center gap-1 text-sm">
+        <Box className="avgRatingIcon">
           <StarIcon color="yellow" weight="fill" />
           <span>{avgRating}</span>
         </Box>
-
         <Box className="itemBox">
           <ReviewPopup />
         </Box>

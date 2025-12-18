@@ -1,4 +1,4 @@
-import { Box, Text } from "@mantine/core";
+import { Box, Text, Title } from "@mantine/core";
 import "./UserReview.css";
 import { movieReview } from "../../../types/types";
 import { StarIcon } from "@phosphor-icons/react";
@@ -13,27 +13,22 @@ const UserReview = ({ review }: userReview) => {
       <Box className="starAndRating">
         <StarIcon weight="fill" color="yellow" />
         <Box className="ratingHolder">
-          <Text c="#ffe066">{review.rating}</Text>
+          <Text c="yellow.4">{review.rating}</Text>
           <Text className="opacity-80">/10</Text>
         </Box>
       </Box>
       <Box className="mb-3">
-        <Text className="reviewTitle" title={review.title}>
+        <Title order={4}   title={review.title}>
           {review.title}
-        </Text>
+        </Title>
       </Box>
       <Box className="contentHolder">
-        <Text className="username">{review.username}</Text>
+        <Text  size="xs" c="yellow.2">{review.username}</Text>
         <span className="mx-2">•</span>
-        <Text className="time">{review.createdAt.toLocaleDateString()}</Text>
+        <Text  size="xs">{review.createdAt.toLocaleDateString()}</Text>
       </Box>
       <Text
-        className="content"
-        style={{
-          display: "-webkit-box",
-          WebkitLineClamp: 4,
-          WebkitBoxOrient: "vertical",
-        }}
+        className="content "
       >
         {review.content}
       </Text>

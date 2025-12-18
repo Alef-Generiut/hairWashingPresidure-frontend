@@ -1,18 +1,11 @@
 @import "tailwindcss";
-
-@layer components {
-
-}
-
 #root {
   margin: 0 auto;
   text-align: center;
 }
-
 .card {
   padding: 2em;
 }
-
 .read-the-docs {
   color: #888;
 }

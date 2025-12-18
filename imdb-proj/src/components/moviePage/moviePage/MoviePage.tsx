@@ -17,7 +17,7 @@ const mockReview: movieReview = {
   rating: 9,
   title: "A Visceral, Grand-Scale Sequel That Raises the Bar",
   content:
-    "Dune: Part Two expands everything that made the first film compelling. The world feels heavier, the stakes more personal, and the imagery consistently breathtaking.",
+    "Dune: Part Two expands everything that made the first film compelling. The world feels heavier, the stakes more personal, and the imagery consistently breathtaking.aaaaaaa aaaaaaaaa aaaaaaa aaaaaaaa aaaaaaaaa aaaaaaaaaa aaaaaaaaa aaaaaaaaa aaaaaaaa aaaaaa aaaaaaa aaaaaaa aaaaaaa aaaaaaaa aaaaaa aaaaaaa aaaaaa aaaaaa aaaaa ",
   username: "cinemaEnthusiast",
   movieId: "movie_dune_part_two",
   createdAt: new Date("2024-02-20T19:42:00Z"),

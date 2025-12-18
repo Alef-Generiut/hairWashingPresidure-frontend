@@ -10,7 +10,6 @@ const AppLayout = () => {
           <Header />
         </Flex>
       </AppShell.Header>
-
       <AppShell.Main>
         <Outlet />
       </AppShell.Main>

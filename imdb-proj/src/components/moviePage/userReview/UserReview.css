@@ -7,20 +7,11 @@
   .ratingHolder {
     @apply flex items-baseline font-semibold;
   }
-  .reviewTitle {
-    @apply text-lg font-semibold leading-snug truncate;
-  }
   .contentHolder {
-    @apply mb-4 flex items-center text-xs;
-  }
-  .username {
-    @apply text-amber-300 truncate max-w-[140px];
-  }
-  .time {
-    @apply truncate max-w-[120px];
+    @apply mb-4 flex items-center;
   }
   .content {
-    @apply text-sm leading-relaxed overflow-hidden text-ellipsis;
+    @apply text-sm overflow-hidden text-ellipsis line-clamp-4;
   }
   .starAndRating {
     @apply mb-3 flex items-center gap-2;

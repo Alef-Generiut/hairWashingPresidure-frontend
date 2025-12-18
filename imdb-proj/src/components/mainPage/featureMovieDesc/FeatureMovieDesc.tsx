@@ -11,7 +11,6 @@ const FeatureMovieDesc = ({ image, text }: featureMovieDesc) => {
       <Box className="sideImageHolder">
         <Image src={image} className="sideImage" radius="md" fit="cover" />
       </Box>
-
       <Text size="xl" className="movieTitle">
         {text}
       </Text>

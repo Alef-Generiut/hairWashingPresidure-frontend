@@ -4,15 +4,12 @@
   .textHolder {
     @apply absolute -bottom-[6vh] left-[2vw] flex items-end gap-4 z-20;
   }
-
   .sideImageHolder {
     @apply w-[13vw] h-[40vh] rounded-md overflow-hidden shrink-0;
   }
-
   .sideImage {
     @apply w-full h-full object-cover rounded-md;
   }
-
   .movieTitle {
     @apply -translate-y-[5vh];
   }

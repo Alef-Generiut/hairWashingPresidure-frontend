@@ -60,7 +60,7 @@ const LoginSignUp = () => {
         h="100vh"
         w="60vw"
         bg="dark"
-        className="mask-[linear-gradient(to_right,transparent_0%,black_35%)]"
+        className="fade"
       >
         <Center h="100%">
           <Paper w={320} p="xl" radius="md" bg="dark" className="ml-[20vw]">

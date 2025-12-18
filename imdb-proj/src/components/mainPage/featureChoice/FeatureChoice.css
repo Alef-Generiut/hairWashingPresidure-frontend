@@ -2,30 +2,24 @@
 
 @layer components {
   .featuredCard {
-    @apply relative w-[20vw] h-[20vh] rounded-2xl overflow-hidden flex items-center z-50 mt-[2vh] ;
+    @apply relative w-[20vw] h-[20vh] rounded-2xl overflow-hidden flex items-center z-50 mt-[2vh];
   }
-
   .featuredBg {
     @apply absolute inset-0;
   }
-
   .featuredBgImg {
     @apply w-full h-full object-cover brightness-40;
   }
-
   .featuredContent {
-    @apply relative z-20 flex items-start  px-[0.5vw] space-x-[0.5vw] ;
+    @apply relative z-20 flex items-start  px-[0.5vw] space-x-[0.5vw];
   }
-
   .featuredPoster {
-    @apply  h-[15vh] rounded-lg overflow-hidden shrink-0;
+    @apply h-[15vh] rounded-lg overflow-hidden shrink-0;
   }
-
   .posterImg {
     @apply w-full h-full object-cover rounded-lg;
   }
-
-  .featuredTitle{
-    @apply text-left
+  .featuredTitle {
+    @apply text-left;
   }
 }

@@ -36,9 +36,9 @@ const HomePageMovie = ({ movie }: homePageMovie) => {
             </Box>
           </Box>
         </Box>
-        <Box className="features space-y-[4vh]">
+        <Box className="features">
           <Box>
-            <Text className="flex justify-start" size="xs">
+            <Text ta="start" size="xs">
               <span className="text-yellow-400 mx-0.5">●</span> Featured Choices
             </Text>
           </Box>

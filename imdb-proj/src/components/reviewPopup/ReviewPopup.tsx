@@ -43,7 +43,6 @@ const ReviewPopup = ({
           </Text>
         </button>
       </Popover.Target>
-
       <Popover.Dropdown>
         <Card className="card" withBorder={false} px={0}>
           <Flex justify="center" className="space-x-[1.5vw]">
@@ -56,7 +55,6 @@ const ReviewPopup = ({
                 &times;
               </button>
             </Box>
-
             <Box>
               <Text size="lg" className="truncate" w="75%">
                 Review '{title}'
@@ -70,7 +68,6 @@ const ReviewPopup = ({
                 color="yellow.5"
                 className="mt-1 mb-4"
               />
-
               <Textarea
                 placeholder="Review text"
                 minRows={6}
@@ -82,7 +79,6 @@ const ReviewPopup = ({
                   input: "textEreaInput",
                 }}
               />
-
               <Text
                 fz={10}
                 ta="right"
@@ -92,7 +88,6 @@ const ReviewPopup = ({
               >
                 {reviewText.length}/500
               </Text>
-
               <Flex mt="md" justify="end">
                 <Button
                   color="yellow.5"

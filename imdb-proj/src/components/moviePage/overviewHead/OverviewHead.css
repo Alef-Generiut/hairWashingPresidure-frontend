@@ -1,7 +1,6 @@
 @import "tailwindcss";
 
 @layer components {
-
   .movieLength {
     @apply text-sm flex items-center;
   }

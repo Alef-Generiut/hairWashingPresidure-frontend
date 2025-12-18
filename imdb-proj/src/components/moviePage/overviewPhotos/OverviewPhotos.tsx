@@ -14,7 +14,6 @@ const OverviewPhotos = (/*{ posterImage, movieImage }: overviewPhotos*/) => {
       <Box className="posterImage">
         <Image src={posterImage} className="image" radius="md" />
       </Box>
-
       <Box className="movieImage">
         <Image src={movieImage} className="image" radius="md" />
       </Box>

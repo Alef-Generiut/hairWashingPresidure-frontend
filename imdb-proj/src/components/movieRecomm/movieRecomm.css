@@ -25,4 +25,7 @@
   .itemBox {
     @apply flex items-center justify-center;
   }
+  .avgRatingIcon {
+    @apply flex items-center gap-1 text-sm;
+  }
 }

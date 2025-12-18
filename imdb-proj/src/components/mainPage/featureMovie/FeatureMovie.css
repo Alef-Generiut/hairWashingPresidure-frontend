@@ -1,39 +1,34 @@
-  @import "tailwindcss";
+@import "tailwindcss";
 
-  @layer components {
-    .mainRow {
-      @apply relative w-full h-full flex;
-    }
-    .featureMovieGroup {
-      @apply relative flex-1 h-full;
-    }
-    .headlineMovie {
-      @apply relative w-[75vw] h-[70vh] flex items-end justify-center rounded-md  mt-[13vh];
-    }
-    .features {
-      @apply pl-[1vw];
-    }
-    .imageHolder {
-      @apply  rounded-md overflow-hidden h-[70vh];
-    }
-
-    .frontImage {
-      @apply w-full h-full object-cover mask-[linear-gradient(to_top,transparent_0%,black_30%)];
-    }
-
-    .textHolder {
-      @apply absolute -bottom-[6vh] left-[2vw] flex items-end gap-4 z-20;
-    }
-
-    .sideImageHolder {
-      @apply w-[13vw] h-[40vh] rounded-md overflow-hidden shrink-0;
-    }
-
-    .sideImage {
-      @apply w-full h-full object-cover rounded-md;
-    }
-
-    .movieTitle {
-      @apply -translate-y-[5vh];
-    }
+@layer components {
+  .mainRow {
+    @apply relative w-full h-full flex;
   }
+  .featureMovieGroup {
+    @apply relative flex-1 h-full;
+  }
+  .headlineMovie {
+    @apply relative w-[75vw] h-[70vh] flex items-end justify-center rounded-md  mt-[13vh];
+  }
+  .features {
+    @apply pl-[1vw] space-y-[4vh];
+  }
+  .imageHolder {
+    @apply rounded-md overflow-hidden h-[70vh];
+  }
+  .frontImage {
+    @apply w-full h-full object-cover mask-[linear-gradient(to_top,transparent_0%,black_30%)];
+  }
+  .textHolder {
+    @apply absolute -bottom-[6vh] left-[2vw] flex items-end gap-4 z-20;
+  }
+  .sideImageHolder {
+    @apply w-[13vw] h-[40vh] rounded-md overflow-hidden shrink-0;
+  }
+  .sideImage {
+    @apply w-full h-full object-cover rounded-md;
+  }
+  .movieTitle {
+    @apply -translate-y-[5vh];
+  }
+}

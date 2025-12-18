@@ -8,10 +8,13 @@ interface overviewHead {
   releaseYear?: number;
   movieLength?: number;
 }
+const NOT_FOUND_NUMBER = -999;
+const NOT_FOUND_STRING = "notFound";
+
 const OverviewHead = ({
-  name = "notFound",
-  releaseYear = -999,
-  movieLength = -999,
+  name = NOT_FOUND_STRING,
+  releaseYear = NOT_FOUND_NUMBER,
+  movieLength = NOT_FOUND_NUMBER,
 }: overviewHead) => {
   return (
     <Flex
@@ -21,14 +24,14 @@ const OverviewHead = ({
       className="w-full mb-6"
     >
       <Box>
-        <Text  fz={40} >{name}</Text>
+        <Text fz={40}>{name}</Text>
 
         <Text className=" movieLength" fz={12} c="gray.6">
-          {releaseYear != -999 ? releaseYear : "notFound"}
+          {releaseYear != NOT_FOUND_NUMBER ? releaseYear : NOT_FOUND_STRING}
           <span className="mx-2">•</span>
-          {movieLength != -999
+          {movieLength != NOT_FOUND_NUMBER
             ? Math.floor(movieLength / 60) + "h " + (movieLength % 60) + "m"
-            : "notFound"}
+            : NOT_FOUND_STRING}
         </Text>
       </Box>
 
@@ -38,7 +41,7 @@ const OverviewHead = ({
         </Box>
         <Flex align="center" className="rating">
           <StarIcon color="yellow" weight="fill" />
-          <Text className="font-medium">{8.7}/10</Text>
+          <Text size="medium">{8.7}/10</Text>
         </Flex>
       </Flex>
     </Flex>
