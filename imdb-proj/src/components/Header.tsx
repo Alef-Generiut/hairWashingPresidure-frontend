@@ -5,7 +5,7 @@ import {
   MagnifyingGlassIcon,
 } from "@phosphor-icons/react/dist/ssr";
 import { useState } from "react";
-import { Form, Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Header = () => {
   const navigate = useNavigate();
@@ -40,11 +40,12 @@ const Header = () => {
           size="xs"
           placeholder="Search"
           rightSection={
-            <MagnifyingGlassIcon
-              size={"1.5vw"}
-              weight="light"
+            <Box
+              className="pointer-events-auto"
               onClick={() => submitSearch(searchBarInput)}
-            />
+            >
+              <MagnifyingGlassIcon size={"1.5vw"} weight="light" />
+            </Box>
           }
           onChange={(input) => setSearchBarInput(input.target.value)}
         />

@@ -1,6 +1,6 @@
 import { Box, Text, Image } from "@mantine/core";
 import image from "../../assets/enternal-logo.jpg";
-import { StarIcon, InfoIcon } from "@phosphor-icons/react";
+import { StarIcon } from "@phosphor-icons/react";
 import ReviewPopup from "../reviewPopup/ReviewPopup";
 import "./movieRecomm.css";
 import { Link } from "react-router-dom";
@@ -37,10 +37,6 @@ const MovieRecomm = ({
 
         <Box className="itemBox">
           <ReviewPopup />
-        </Box>
-
-        <Box className="itemBox" component={Link} to={`/movie/${movieId}`}>
-          <InfoIcon weight="fill" />
         </Box>
       </Box>
     </Box>

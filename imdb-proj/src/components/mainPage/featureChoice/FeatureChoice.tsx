@@ -15,7 +15,7 @@ const FeatureChoice = ({
   movieId,
 }: featureChoice) => {
   return (
-    <Box className="featuredCard" component={Link} to={`/`}>
+    <Box className="featuredCard" component={Link} to={`/movie/${movieId}`}>
       <Box className="featuredBg">
           <Image src={imageTemp} className="featuredBgImg" fit="cover" />
       </Box>
