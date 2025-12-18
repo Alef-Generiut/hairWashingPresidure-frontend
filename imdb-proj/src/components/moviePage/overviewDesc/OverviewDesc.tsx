@@ -3,22 +3,24 @@ import { genre } from "../../../types/types";
 import "./OverviewDesc.css";
 
 interface overvireDesc {
-  genres: genre[];
-  plot: string;
+  genres?: genre[];
+  plot?: string;
 }
 
-const OverviewDesc = ({ genres, plot }: overvireDesc) => {
+const OverviewDesc = ({ genres, plot = "notFound" }: overvireDesc) => {
   return (
     <Box className="overviewDesc">
       <Flex direction="row" className="genreHolder">
         <Box className="genreHeadline">Genre</Box>
 
-        <Flex className="genreBg">
-          {genres.map((genre) => (
-            <Box key={genre.name} className="genreBox">
-              {genre.name}
-            </Box>
-          ))}
+        <Flex className="genreBg">  
+          {genres
+            ? genres.map((genre) => (
+                <Box key={genre.name} className="genreBox">
+                  {genre.name}
+                </Box>
+              ))
+            : "notFound"}
         </Flex>
       </Flex>
 

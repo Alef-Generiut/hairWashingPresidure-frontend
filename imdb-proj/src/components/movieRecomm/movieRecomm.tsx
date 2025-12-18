@@ -1,34 +1,51 @@
-import { Box, Text, Image, Flex } from "@mantine/core";
+import { Box, Text, Image } from "@mantine/core";
 import image from "../../assets/enternal-logo.jpg";
 import { StarIcon, InfoIcon } from "@phosphor-icons/react";
 import ReviewPopup from "../reviewPopup/ReviewPopup";
 import "./movieRecomm.css";
+import { Link } from "react-router-dom";
 interface movieRecomm {
+  movieId: string;
   Posterimage?: string;
   name?: string;
   avgRating?: number;
+  itemsPerRow: number;
 }
 const MovieRecomm = ({
   Posterimage = image,
   name = "eternal sunshine of the spotless mind",
   avgRating = 8.7,
+  itemsPerRow,
+  movieId,
 }: movieRecomm) => {
+  const widthPercent = 100 / itemsPerRow - 2;
   return (
-    <Box className="recommContainer">
+    <Box
+      className="recommContainer"
+      style={{ width: `${widthPercent}%` }}
+      component={Link}
+      to={`/movie/${movieId}`}
+    >
       <Box className="imgHolder">
         <Image src={Posterimage} className="image" radius="md" fit="cover" />
       </Box>
-      <Text className="recommName" ta="start">{name}</Text>
-      <Flex direction="row" justify="center" align="center" className="mt-1">
-        <Box className="recommText">
-          <Box className="recommRating">
-            <StarIcon color="yellow" weight="fill" />
-            <span>{avgRating}</span>
-          </Box>
+      <Text className="recommName" mt={3} ta="start">
+        {name}
+      </Text>
+      <Box className="recommText ">
+        <Box className="flex items-center gap-1 text-sm">
+          <StarIcon color="yellow" weight="fill" />
+          <span>{avgRating}</span>
+        </Box>
+
+        <Box className="itemBox">
           <ReviewPopup />
+        </Box>
+
+        <Box className="itemBox" component={Link} to={`/movie/${movieId}`}>
           <InfoIcon weight="fill" />
         </Box>
-      </Flex>
+      </Box>
     </Box>
   );
 };

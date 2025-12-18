@@ -5,7 +5,7 @@
     @apply w-full h-full object-cover rounded-md;
   }
   .recommContainer {
-    @apply p-2 bg-neutral-800 rounded-2xl w-[11vw] h-[40vh];
+    @apply p-2 bg-neutral-800 rounded-2xl;
   }
   .image {
     @apply w-full h-full object-cover;
@@ -14,12 +14,15 @@
     @apply overflow-hidden w-full;
   }
   .recommName {
-    @apply truncate mt-2 font-medium;
+    @apply truncate font-medium;
   }
   .recommText {
-    @apply flex items-center space-x-2;
+    @apply flex items-center  justify-between mt-3 mx-1;
   }
   .recommRating {
-    @apply flex items-center gap-1;
+    @apply flex items-center justify-around gap-1;
+  }
+  .itemBox {
+    @apply flex items-center justify-center;
   }
 }

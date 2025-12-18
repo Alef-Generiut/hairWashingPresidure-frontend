@@ -1,0 +1,8 @@
+@import "tailwindcss";
+
+@layer components {
+  .lowTaperFade {
+    @apply absolute -z-10 w-[85vw] h-[110vh] rounded-md bg-yellow-400/30 
+         blur-[100px] -translate-x-1/2 -translate-y-1/2 top-3/4 left-1/2;
+  }
+}

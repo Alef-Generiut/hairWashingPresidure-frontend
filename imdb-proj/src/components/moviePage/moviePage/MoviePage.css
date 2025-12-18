@@ -2,15 +2,19 @@
 
 @layer components {
   .moreLike {
-    @apply text-left text-2xl mb-6 font-bold;
+    @apply text-left text-2xl mb-6 font-bold pt-20;
   }
   .tableOfContentHolder {
-    @apply border-l border-gray-700 pl-5 h-fit;
+    @apply border-l  pl-5 h-fit pt-[1vh] border-transparent ;
   }
   .tableOfContentGeneral {
     @apply relative flex items-center pl-3 mb-3;
   }
   .tableOfContentActive {
     @apply font-semibold  before:absolute before:left-0 before:top-0 before:h-full before:w-1 before:rounded before:bg-yellow-400;
+  }
+    .lowTaperFade {
+    @apply absolute -z-10 w-[85vw] h-[110vh] rounded-md bg-yellow-400/30 
+         blur-[100px] -translate-x-1/2 -translate-y-1/2 top-3/4 left-1/2;
   }
 }

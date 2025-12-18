@@ -7,10 +7,8 @@ import OverviewPhotos from "../overviewPhotos/OverviewPhotos";
 import OverviewDesc from "../overviewDesc/OverviewDesc";
 import UserReview from "../userReview/UserReview";
 import MovieRecomm from "../../movieRecomm/movieRecomm";
-
-interface OverviewProps {
-  movie: movie;
-}
+import { Link, useParams } from "react-router-dom";
+import { movies } from "../../../hardCodedData";
 
 const STICKY_OFFSET = 80;
 
@@ -25,11 +23,14 @@ const mockReview: movieReview = {
   createdAt: new Date("2024-02-20T19:42:00Z"),
 };
 
-const mockRecommendations = Array.from({ length: 5 });
+const MoviePage = () => {
+  const { movieId } = useParams<{ movieId: string }>();
 
-const MoviePage = ({ movie }: OverviewProps) => {
+  const movie: movie | undefined = movies.find((movie) => movie.id === movieId);
   return (
-    <Flex gap="xl" className="p-6">
+    <Flex gap="xl" className="p-6  mt-[10vh]">
+      <Box className="lowTaperFade" />
+
       <Box flex={1}>
         <section>
           <h2 id="overview" className="sr-only">
@@ -37,14 +38,14 @@ const MoviePage = ({ movie }: OverviewProps) => {
           </h2>
 
           <OverviewHead
-            name={movie.name}
-            releaseYear={movie.releaseYear}
-            movieLength={movie.length}
+            name={movie?.name}
+            releaseYear={movie?.releaseYear}
+            movieLength={movie?.length}
           />
 
           <MemoizedOverviewPhotos />
 
-          <OverviewDesc genres={movie.genres} plot={movie.plot} />
+          <OverviewDesc genres={movie?.genres} plot={movie?.plot} />
         </section>
 
         <Divider my="xl" />
@@ -59,7 +60,6 @@ const MoviePage = ({ movie }: OverviewProps) => {
             <MemoizedUserReview review={mockReview} />
           </Flex>
         </section>
-        <Divider my="xl" />
 
         <section>
           <h2 id="similar" className="sr-only">
@@ -69,9 +69,20 @@ const MoviePage = ({ movie }: OverviewProps) => {
             <span className="text-yellow-400">●</span> More like this
           </Box>
 
-          <Flex justify="center" gap="md" wrap="wrap">
-            {mockRecommendations.map((_, i) => (
-              <MemoizedMovieRecomm key={i} />
+          <Flex
+            justify="center"
+            align="center"
+            direction="row"
+            gap="md"
+            className="w-[75vw] mx-auto"
+          >
+            {movies.map((movie) => (
+                <MemoizedMovieRecomm
+                  name={movie.name}
+                  avgRating={movie.avgRating}
+                  itemsPerRow={6}
+                  movieId={movie.id}
+                />
             ))}
           </Flex>
         </section>

@@ -5,25 +5,31 @@ import image from "../../../assets/enternal-logo.jpg";
 import FeatureMovieDesc from "../featureMovieDesc/FeatureMovieDesc.tsx";
 import FeatureChoice from "../featureChoice/FeatureChoice.tsx";
 import { movies } from "../../../hardCodedData.ts";
-const HomePageMovie = () => {
+import { Link } from "react-router-dom";
+import { movie } from "../../../types/types.ts";
+
+interface homePageMovie {
+  movie: movie;
+}
+
+const HomePageMovie = ({ movie }: homePageMovie) => {
   return (
     <Box className="headlineMovie">
       <Box className="mainRow">
-        <Box className="featureMovieGroup">
-          <Box className="imageHolder">
-            <Image
-              src={imageTemp}
-              alt="Background"
-              className="frontImage"
-              fit="cover"
-            />
-          </Box>
+        <Box className="featureMovieGroup" component={Link} to={`/movie/${movie.id}`}>
+          <Box>
+            <Box className="imageHolder">
+              <Image
+                src={imageTemp}
+                alt="Background"
+                className="frontImage"
+                fit="cover"
+              />
+            </Box>
 
-          <Box className="contentRow">
-            <FeatureMovieDesc
-              image={image}
-              text="Eternal Sunshine Of The Spotless Mind"
-            />
+            <Box className="contentRow">
+              <FeatureMovieDesc image={image} text={movie.name} />
+            </Box>
           </Box>
         </Box>
         <Box className="features space-y-[4vh]">
@@ -34,7 +40,7 @@ const HomePageMovie = () => {
           </Box>
           <Box>
             {movies.slice(0, 3).map((movie) => (
-              <FeatureChoice movieName={movie.name} />
+              <FeatureChoice movieName={movie.name} movieId={movie.id}/>
             ))}
           </Box>
         </Box>

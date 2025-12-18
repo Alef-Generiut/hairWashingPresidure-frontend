@@ -1,9 +1,7 @@
 @import "tailwindcss";
 
 @layer components {
-  .movieName {
-    @apply text-4xl font-semibold mb-1;
-  }
+
   .movieLength {
     @apply text-sm flex items-center;
   }

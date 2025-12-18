@@ -33,13 +33,19 @@ const ReviewPopup = ({
       onClose={() => setOpened(false)}
     >
       <Popover.Target>
-        <button className="flex row-auto" onClick={() => setOpened((o) => !o)}>
-          <StarIcon className="mt-[0.7vh]" /> Rate
+        <button
+          className="flex row-auto text-sm"
+          onClick={() => setOpened((o) => !o)}
+        >
+          <StarIcon className="mt-[0.5vh]" size={13} />{" "}
+          <Text fz="xs" ml={3}>
+            Rate
+          </Text>
         </button>
       </Popover.Target>
 
-      <Popover.Dropdown >
-        <Card  className="card" withBorder={false} px={0}>
+      <Popover.Dropdown>
+        <Card className="card" withBorder={false} px={0}>
           <Flex justify="center" className="space-x-[1.5vw]">
             <Box>
               <button
@@ -72,7 +78,7 @@ const ReviewPopup = ({
                 value={reviewText}
                 onChange={(event) => setReviewText(event.currentTarget.value)}
                 autosize
-                classNames= {{
+                classNames={{
                   input: "textEreaInput",
                 }}
               />

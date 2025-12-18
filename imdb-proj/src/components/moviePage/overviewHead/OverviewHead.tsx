@@ -1,14 +1,18 @@
 import { Flex, Box, Text } from "@mantine/core";
 import ReviewPopup from "../../reviewPopup/ReviewPopup";
 import { StarIcon } from "@phosphor-icons/react";
-import "./OverviewHead.css"
+import "./OverviewHead.css";
 
 interface overviewHead {
-  name: string;
-  releaseYear: number;
-  movieLength: number;
+  name?: string;
+  releaseYear?: number;
+  movieLength?: number;
 }
-const OverviewHead = ({ name, releaseYear, movieLength }: overviewHead) => {
+const OverviewHead = ({
+  name = "notFound",
+  releaseYear = -999,
+  movieLength = -999,
+}: overviewHead) => {
   return (
     <Flex
       direction="row"
@@ -17,12 +21,14 @@ const OverviewHead = ({ name, releaseYear, movieLength }: overviewHead) => {
       className="w-full mb-6"
     >
       <Box>
-        <Text className="movieName">{name}</Text>
+        <Text  fz={40} >{name}</Text>
 
-        <Text className=" movieLength">
-          {releaseYear}
+        <Text className=" movieLength" fz={12} c="gray.6">
+          {releaseYear != -999 ? releaseYear : "notFound"}
           <span className="mx-2">•</span>
-          {Math.floor(movieLength / 60) + "h " + (movieLength % 60) + "m"}
+          {movieLength != -999
+            ? Math.floor(movieLength / 60) + "h " + (movieLength % 60) + "m"
+            : "notFound"}
         </Text>
       </Box>
 
@@ -30,10 +36,7 @@ const OverviewHead = ({ name, releaseYear, movieLength }: overviewHead) => {
         <Box className="reviewPopup">
           <ReviewPopup />
         </Box>
-        <Flex
-          align="center"
-          className="rating"
-        >
+        <Flex align="center" className="rating">
           <StarIcon color="yellow" weight="fill" />
           <Text className="font-medium">{8.7}/10</Text>
         </Flex>
