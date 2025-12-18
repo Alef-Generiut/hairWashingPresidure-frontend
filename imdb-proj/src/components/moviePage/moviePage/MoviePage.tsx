@@ -7,7 +7,7 @@ import OverviewPhotos from "../overviewPhotos/OverviewPhotos";
 import OverviewDesc from "../overviewDesc/OverviewDesc";
 import UserReview from "../userReview/UserReview";
 import MovieRecomm from "../../movieRecomm/movieRecomm";
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { movies } from "../../../hardCodedData";
 
 const STICKY_OFFSET = 80;

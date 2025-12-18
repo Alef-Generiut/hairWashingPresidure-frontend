@@ -5,15 +5,15 @@ import {
   MagnifyingGlassIcon,
 } from "@phosphor-icons/react/dist/ssr";
 import { useState } from "react";
-import { movie } from "../types/types";
-import { movies } from "../hardCodedData";
-import { Link } from "react-router-dom";
+import { Form, Link, useNavigate } from "react-router-dom";
 
 const Header = () => {
+  const navigate = useNavigate();
   const [searchBarInput, setSearchBarInput] = useState<string>("");
 
-  const submitSearch = (input: string): movie[] => {
-    return movies.filter((movie) => movie.name.includes(input));
+  const submitSearch = (input: string) => {
+    if (!input.trim()) return;
+    navigate(`/search?q=${encodeURIComponent(input)}`);
   };
 
   return (
@@ -28,16 +28,27 @@ const Header = () => {
       <Box component={Link} to={`/`}>
         <Image src={imdbLogo} w={"3.5vw"} radius="sm" />
       </Box>
-      <Box className="w-[70vw]">
+      <form
+        className="w-[70vw]"
+        onSubmit={(submit) => {
+          submit.preventDefault();
+          submitSearch(searchBarInput);
+        }}
+      >
         <Input
           variant="filled"
           size="xs"
           placeholder="Search"
-          rightSection={<MagnifyingGlassIcon size={"1.5vw"} weight="light" />}
+          rightSection={
+            <MagnifyingGlassIcon
+              size={"1.5vw"}
+              weight="light"
+              onClick={() => submitSearch(searchBarInput)}
+            />
+          }
           onChange={(input) => setSearchBarInput(input.target.value)}
-          onSubmit={() => submitSearch(searchBarInput)}
         />
-      </Box>
+      </form>
       <Box className="hidden md:block">
         <Button variant="transparent">
           <SignOutIcon size={"1.5vw"} weight="light" />

@@ -3,6 +3,7 @@ import { Suspense, lazy } from "react";
 import MainPage from "./components/mainPage/mainPage/MainPage";
 import AppLayout from "./AppLayout";
 import { SpinnerIcon } from "@phosphor-icons/react";
+import MovieSearch from "./components/movieSearch/MovieSearch";
 
 const MoviePage = lazy(
   () => import("./components/moviePage/moviePage/MoviePage")
@@ -27,6 +28,10 @@ const router = createBrowserRouter([
             <MoviePage />
           </Suspense>
         ),
+      },
+      {
+        path: "search",
+        element: <MovieSearch />,
       },
     ],
   },

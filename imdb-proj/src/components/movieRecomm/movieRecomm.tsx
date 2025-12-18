@@ -20,18 +20,15 @@ const MovieRecomm = ({
 }: movieRecomm) => {
   const widthPercent = 100 / itemsPerRow - 2;
   return (
-    <Box
-      className="recommContainer"
-      style={{ width: `${widthPercent}%` }}
-      component={Link}
-      to={`/movie/${movieId}`}
-    >
-      <Box className="imgHolder">
-        <Image src={Posterimage} className="image" radius="md" fit="cover" />
+    <Box className="recommContainer" style={{ width: `${widthPercent}%` }}>
+      <Box component={Link} to={`/movie/${movieId}`}>
+        <Box className="imgHolder">
+          <Image src={Posterimage} className="image" radius="md" fit="cover" />
+        </Box>
+        <Text className="recommName" mt={3} ta="start">
+          {name}
+        </Text>
       </Box>
-      <Text className="recommName" mt={3} ta="start">
-        {name}
-      </Text>
       <Box className="recommText ">
         <Box className="flex items-center gap-1 text-sm">
           <StarIcon color="yellow" weight="fill" />
