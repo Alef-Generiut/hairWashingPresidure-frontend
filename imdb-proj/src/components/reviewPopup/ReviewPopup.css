@@ -3,12 +3,10 @@
     @apply w-[375px] bg-gray-900 relative z-50 overflow-hidden;
   }
   .closeButton {
-    @apply absolute top-3 right-3 text-gray-400 hover:text-gray-100 text-xl leading-none cursor-pointer;
+    @apply absolute top-3 right-3 text-gray-400 text-xl leading-none cursor-pointer;
   }
   .textEreaInput {
     @apply border-gray-700  placeholder-gray-500 rounded-md;
   }
-  .submitButton {
-    @apply bg-yellow-400 hover:bg-yellow-400 py-2;
-  }
+ 
 }

@@ -1,8 +1,8 @@
 import { Box, Flex, Title } from "@mantine/core";
-import { useSearchParams } from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
 import { movies } from "../../hardCodedData";
 import MovieRecomm from "../movieRecomm/movieRecomm";
-import "./movieSearch.css"
+import "./movieSearch.css";
 
 const MovieSearch = () => {
   const [searchParams] = useSearchParams();
@@ -15,7 +15,13 @@ const MovieSearch = () => {
     <Box>
       <Box className="lowTaperFade" />;
       <Box className="titleContainer">
-        <Title>{`results for: ${search}`}</Title>
+        {filteredMovies.length != 0 ? (
+          <Title>results for: {search}</Title>
+        ) : (
+          <Box component={Link} to={`/`}>
+            couldnt find results, click here to return home
+          </Box>
+        )}
       </Box>
       <Flex
         justify="center"
@@ -25,12 +31,7 @@ const MovieSearch = () => {
         className="w-[90vw] mx-auto"
       >
         {filteredMovies.map((movie) => (
-          <MovieRecomm
-            name={movie.name}
-            avgRating={movie.avgRating}
-            itemsPerRow={6}
-            movieId={movie.id}
-          />
+          <MovieRecomm movie={movie} itemsPerRow={6} />
         ))}
       </Flex>
     </Box>

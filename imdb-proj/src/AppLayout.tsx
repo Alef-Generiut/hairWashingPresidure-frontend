@@ -1,10 +1,11 @@
 import { AppShell, Flex } from "@mantine/core";
 import Header from "./components/Header";
-import { Outlet } from "react-router-dom";
+import { Outlet, ScrollRestoration } from "react-router-dom";
 
 const AppLayout = () => {
   return (
     <AppShell>
+            <ScrollRestoration />
       <AppShell.Header>
         <Flex mih={50} justify="center" align="center">
           <Header />

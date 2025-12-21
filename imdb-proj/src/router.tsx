@@ -1,13 +1,12 @@
 import { createBrowserRouter } from "react-router-dom";
 import { Suspense, lazy } from "react";
-import MainPage from "./components/mainPage/mainPage/MainPage";
+import MainPage from "./containers/mainPage/MainPage";
 import AppLayout from "./AppLayout";
 import { SpinnerIcon } from "@phosphor-icons/react";
 import MovieSearch from "./components/movieSearch/MovieSearch";
+import { urlVerification } from "./middleware/middleware";
 
-const MoviePage = lazy(
-  () => import("./components/moviePage/moviePage/MoviePage")
-);
+const MoviePage = lazy(() => import("./containers/moviePage/MoviePage"));
 
 const router = createBrowserRouter([
   {
@@ -32,6 +31,7 @@ const router = createBrowserRouter([
       {
         path: "search",
         element: <MovieSearch />,
+        loader: urlVerification,
       },
     ],
   },

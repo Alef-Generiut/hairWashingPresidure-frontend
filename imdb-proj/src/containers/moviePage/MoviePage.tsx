@@ -1,14 +1,14 @@
 import { Box, Divider, Flex, TableOfContents } from "@mantine/core";
-import { movie, movieReview } from "../../../types/types";
+import { movie, movieReview } from "../../types/types";
 import "./MoviePage.css";
 import React from "react";
-import OverviewHead from "../overviewHead/OverviewHead";
-import OverviewPhotos from "../overviewPhotos/OverviewPhotos";
-import OverviewDesc from "../overviewDesc/OverviewDesc";
-import UserReview from "../userReview/UserReview";
-import MovieRecomm from "../../movieRecomm/movieRecomm";
+import OverviewHead from "../../components/moviePage/overviewHead/OverviewHead";
+import OverviewPhotos from "../../components/moviePage/overviewPhotos/OverviewPhotos";
+import OverviewDesc from "../../components/moviePage/overviewDesc/OverviewDesc";
+import UserReview from "../../components/moviePage/userReview/UserReview";
+import MovieRecomm from "../../components/movieRecomm/movieRecomm";
 import { useParams } from "react-router-dom";
-import { movies } from "../../../hardCodedData";
+import { movies } from "../../hardCodedData";
 
 const STICKY_OFFSET = 80;
 
@@ -77,12 +77,7 @@ const MoviePage = () => {
             className="w-[75vw] mx-auto"
           >
             {movies.map((movie) => (
-                <MemoizedMovieRecomm
-                  name={movie.name}
-                  avgRating={movie.avgRating}
-                  itemsPerRow={6}
-                  movieId={movie.id}
-                />
+              <MemoizedMovieRecomm movie={movie} itemsPerRow={6} />
             ))}
           </Flex>
         </section>

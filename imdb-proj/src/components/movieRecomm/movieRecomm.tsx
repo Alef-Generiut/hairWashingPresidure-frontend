@@ -4,35 +4,32 @@ import { StarIcon } from "@phosphor-icons/react";
 import ReviewPopup from "../reviewPopup/ReviewPopup";
 import "./movieRecomm.css";
 import { Link } from "react-router-dom";
+import { movie } from "../../types/types";
 interface movieRecomm {
-  movieId: string;
-  Posterimage?: string;
-  name?: string;
-  avgRating?: number;
   itemsPerRow: number;
+  movie: movie;
 }
-const MovieRecomm = ({
-  Posterimage = image,
-  name = "eternal sunshine of the spotless mind",
-  avgRating = 8.7,
-  itemsPerRow,
-  movieId,
-}: movieRecomm) => {
+const MovieRecomm = ({ itemsPerRow, movie }: movieRecomm) => {
   const widthPercent = 100 / itemsPerRow - 2;
   return (
     <Box className="recommContainer" style={{ width: `${widthPercent}%` }}>
-      <Box component={Link} to={`/movie/${movieId}`}>
+      <Box component={Link} to={`/movie/${movie.id}`}>
         <Box className="imgHolder">
-          <Image src={Posterimage} className="image" radius="md" fit="cover" />
+          <Image
+            src={image}
+            className="image"
+            radius="md"
+            fit="cover"
+          />
         </Box>
         <Text className="recommName" mt={3} ta="start">
-          {name}
+          {movie.name}
         </Text>
       </Box>
       <Box className="recommText ">
         <Box className="avgRatingIcon">
           <StarIcon color="yellow" weight="fill" />
-          <span>{avgRating}</span>
+          <span>{movie.avgRating}</span>
         </Box>
         <Box className="itemBox">
           <ReviewPopup />

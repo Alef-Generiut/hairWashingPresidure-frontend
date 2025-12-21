@@ -21,7 +21,14 @@ const ReviewPopup = ({
 }: reviewPopup) => {
   const [rating, setRating] = useState(0);
   const [reviewText, setReviewText] = useState("");
-  const [opened, setOpened] = useState(false);
+  const [IsOpend, setIsOpend] = useState(false);
+
+  const handleSubmit = () => {
+    if (rating === 0 || reviewText.trim() === "") return;
+
+    setIsOpend((opend) => !opend);
+  };
+
   return (
     <Popover
       width={450}
@@ -29,15 +36,15 @@ const ReviewPopup = ({
       position="bottom"
       withArrow
       shadow="md"
-      opened={opened}
-      onClose={() => setOpened(false)}
+      opened={IsOpend}
+      onClose={() => setIsOpend(false)}
     >
       <Popover.Target>
         <button
           className="flex row-auto text-sm"
-          onClick={() => setOpened((o) => !o)}
+          onClick={() => setIsOpend((o) => !o)}
         >
-          <StarIcon className="mt-[0.5vh]" size={13} />{" "}
+          <StarIcon className="mt-[0.5vh]" size={13} />
           <Text fz="xs" ml={3}>
             Rate
           </Text>
@@ -50,7 +57,7 @@ const ReviewPopup = ({
               <button
                 id="closer"
                 className="closeButton"
-                onClick={() => setOpened(false)}
+                onClick={() => setIsOpend(false)}
               >
                 &times;
               </button>
@@ -90,12 +97,14 @@ const ReviewPopup = ({
               </Text>
               <Flex mt="md" justify="end">
                 <Button
-                  color="yellow.5"
+                  color={
+                    rating === 0 || reviewText.trim() === ""
+                      ? "gray.7"
+                      : "yellow.4"
+                  }
                   c="black"
                   radius="md"
-                  className="submitButton"
-                  disabled={rating === 0 || reviewText.trim() === ""}
-                  onClick={() => setOpened((o) => !o)}
+                  onClick={() => handleSubmit()}
                 >
                   Add Review
                   <PlusIcon className="ml-[0.5vw]" />
