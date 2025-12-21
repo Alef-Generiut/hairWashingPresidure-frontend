@@ -1,4 +1,4 @@
-import { Box, Flex, Title } from "@mantine/core";
+import { Box, Flex, Title, Text, Button } from "@mantine/core";
 import { Link, useSearchParams } from "react-router-dom";
 import { movies } from "../../hardCodedData";
 import MovieRecomm from "../movieRecomm/movieRecomm";
@@ -14,15 +14,18 @@ const MovieSearch = () => {
   return (
     <Box>
       <Box className="lowTaperFade" />;
-      <Box className="titleContainer">
-        {filteredMovies.length != 0 ? (
+      {filteredMovies.length != 0 ? (
+        <Box className="titleContainer">
           <Title>results for: {search}</Title>
-        ) : (
-          <Box component={Link} to={`/`}>
-            couldnt find results, click here to return home
-          </Box>
-        )}
-      </Box>
+        </Box>
+      ) : (
+        <Box pt={"xl"}>
+          <Text size="xl">couldnt find results for {search}</Text>
+          <Text component={Link} to={`/`} size="xl" td="underline" c="blue">
+            press here to return home
+          </Text>
+        </Box>
+      )}
       <Flex
         justify="center"
         align="center"
