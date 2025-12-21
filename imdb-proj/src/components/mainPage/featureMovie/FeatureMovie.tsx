@@ -25,7 +25,6 @@ const HomePageMovie = ({ movie }: homePageMovie) => {
             <Box className="imageHolder">
               <Image
                 src={imageTemp}
-                alt="Background"
                 className="frontImage"
                 fit="cover"
               />

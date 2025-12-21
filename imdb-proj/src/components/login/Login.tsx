@@ -4,7 +4,6 @@ import {
   TextInput,
   PasswordInput,
   Button,
-  Checkbox,
   Stack,
   Text,
   Center,
@@ -13,9 +12,10 @@ import {
   Flex,
   Paper,
 } from "@mantine/core";
-
+import "./login.css"
 import bgPhoto from "../../assets/loginSignupBg.jpg";
 import imdbLogo from "../../assets/imdb-logo.png";
+import { redirect } from "react-router-dom";
 
 const inputStyles = {
   input: {
@@ -25,16 +25,12 @@ const inputStyles = {
   },
 };
 
-const LoginSignUp = () => {
-  const [hasUser, setHasUser] = useState<boolean>(true);
+const Login = () => {
   const [email, setEmail] = useState<string>("");
-  const [username, setUsername] = useState<string>("");
   const [password, setPassword] = useState<string>("");
-  const [confirmPassword, setConfirmPassword] = useState<string>("");
-  const [acceptedTerms, setAcceptedTerms] = useState<boolean>(false);
 
   const handleSubmit = () => {
-    console.log({ email, username, password, confirmPassword, acceptedTerms });
+    console.log({ email, password });
   };
 
   return (
@@ -67,7 +63,7 @@ const LoginSignUp = () => {
             <Flex justify="space-between" align="flex-start" mb="md">
               <Box mb="md">
                 <Text size="xl" ta="left">
-                  {hasUser ? "Login" : "Signup"}
+                  Login
                 </Text>
                 <Text size="sm">to get started</Text>
               </Box>
@@ -82,41 +78,12 @@ const LoginSignUp = () => {
                 styles={inputStyles}
               />
 
-              {!hasUser && (
-                <TextInput
-                  placeholder="Username"
-                  value={username}
-                  onChange={(e) => setUsername(e.currentTarget.value)}
-                  styles={inputStyles}
-                />
-              )}
-
               <PasswordInput
                 placeholder="Password"
                 value={password}
                 onChange={(e) => setPassword(e.currentTarget.value)}
                 styles={inputStyles}
               />
-
-              {!hasUser && (
-                <PasswordInput
-                  placeholder="Confirm Password"
-                  value={confirmPassword}
-                  onChange={(e) => setConfirmPassword(e.currentTarget.value)}
-                  styles={inputStyles}
-                />
-              )}
-
-              {!hasUser && (
-                <Checkbox
-                  label="Agree to our terms and conditions"
-                  checked={acceptedTerms}
-                  onChange={(e) => setAcceptedTerms(e.currentTarget.checked)}
-                  styles={{
-                    label: { fontSize: "0.65rem" },
-                  }}
-                />
-              )}
 
               <Button
                 color="yellow.5"
@@ -133,13 +100,13 @@ const LoginSignUp = () => {
 
             <Group justify="center" mt="md">
               <Text size="sm" c="dimmed">
-                {hasUser ? "New User?" : "Already registered?"}
+                New User?
               </Text>
               <Button
                 variant="subtle"
                 size="sm"
                 c="dimmed"
-                onClick={() => setHasUser((prev) => !prev)}
+                onClick={() => redirect("/sign-up")}
                 styles={{
                   root: {
                     backgroundColor: "transparent",
@@ -152,7 +119,7 @@ const LoginSignUp = () => {
                   },
                 }}
               >
-                {hasUser ? "Register" : "Login"}
+                Login
               </Button>
             </Group>
           </Paper>
@@ -162,4 +129,4 @@ const LoginSignUp = () => {
   );
 };
 
-export default LoginSignUp;
+export default Login;
