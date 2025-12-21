@@ -6,13 +6,11 @@ import "./movieRecomm.css";
 import { Link } from "react-router-dom";
 import { movie } from "../../types/types";
 interface movieRecomm {
-  itemsPerRow: number;
   movie: movie;
 }
-const MovieRecomm = ({ itemsPerRow, movie }: movieRecomm) => {
-  const widthPercent = 100 / itemsPerRow - 2;
+const MovieRecomm = ({ movie }: movieRecomm) => {
   return (
-    <Box className="recommContainer" style={{ width: `${widthPercent}%` }}>
+    <Box className="recommContainer" >
       <Box component={Link} to={`/movie/${movie.id}`}>
         <Box className="imgHolder">
           <Image

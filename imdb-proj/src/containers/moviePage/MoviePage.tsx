@@ -76,8 +76,10 @@ const MoviePage = () => {
             gap="md"
             className="w-[75vw] mx-auto"
           >
-            {movies.map((movie) => (
-              <MemoizedMovieRecomm movie={movie} itemsPerRow={6} />
+            {movies.slice(0, 5).map((movie) => (
+              <Box className="w-[18%]">
+                <MemoizedMovieRecomm movie={movie}  />
+              </Box>
             ))}
           </Flex>
         </section>

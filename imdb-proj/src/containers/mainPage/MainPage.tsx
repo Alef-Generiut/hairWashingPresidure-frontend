@@ -25,10 +25,13 @@ const MainPage = () => {
           align="center"
           direction="row"
           gap="md"
-          className="w-[75vw] mx-auto"
+          wrap="nowrap"
+          className="w-[75vw] mx-auto "
         >
           {movies.map((movie) => (
-            <MovieRecomm movie={movie} itemsPerRow={6} />
+            <Box className="w-[14.667%]">
+              <MovieRecomm movie={movie}  />
+            </Box>
           ))}
         </Flex>
       </Box>

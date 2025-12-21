@@ -21,13 +21,11 @@ const OverviewDesc = ({
         <Box className="genreHeadline">Genre</Box>
 
         <Flex className="genreBg">
-          {genres
-            ? genres.map((genre) => (
-                <Box key={genre.name} className="genreBox">
-                  {genre.name}
-                </Box>
-              ))
-            : "notFound"}
+          {genres.map((genre) => (
+            <Box key={genre.name} className="genreBox">
+              {genre.name}
+            </Box>
+          ))}
         </Flex>
       </Flex>
 

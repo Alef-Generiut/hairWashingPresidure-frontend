@@ -34,7 +34,9 @@ const MovieSearch = () => {
         className="w-[90vw] mx-auto"
       >
         {filteredMovies.map((movie) => (
-          <MovieRecomm movie={movie} itemsPerRow={6} />
+          <Box className="w-[18%]">
+          <MovieRecomm movie={movie} />
+          </Box>
         ))}
       </Flex>
     </Box>
