@@ -1,10 +1,10 @@
 import { Box, Text, Title } from "@mantine/core";
 import "./UserReview.css";
-import { movieReview } from "../../../types/types";
+import { review } from "../../../types/types";
 import { StarIcon } from "@phosphor-icons/react";
 
 interface userReview {
-  review: movieReview;
+  review: review;
 }
 
 const UserReview = ({ review }: userReview) => {

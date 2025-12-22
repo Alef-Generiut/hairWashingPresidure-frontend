@@ -15,7 +15,7 @@ export type movie = {
   genres: genre[];
   avgRating:number;
 };
-export type movieReview = {
+export type review = {
   id: string;
   rating: number;
   title: string;

@@ -1,5 +1,5 @@
 import { Box, Divider, Flex, TableOfContents } from "@mantine/core";
-import { movie, movieReview } from "../../types/types";
+import { movie, review } from "../../types/types";
 import "./MoviePage.css";
 import React from "react";
 import OverviewHead from "../../components/moviePage/overviewHead/OverviewHead";
@@ -12,7 +12,7 @@ import { movies } from "../../hardCodedData";
 
 const STICKY_OFFSET = 80;
 
-const mockReview: movieReview = {
+const mockReview: review = {
   id: "rev_8f3c2a91",
   rating: 9,
   title: "A Visceral, Grand-Scale Sequel That Raises the Bar",

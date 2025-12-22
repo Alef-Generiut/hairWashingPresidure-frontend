@@ -21,6 +21,8 @@ const ReviewPopup = ({
 }: reviewPopup) => {
   const [rating, setRating] = useState(0);
   const [reviewText, setReviewText] = useState("");
+  const [reviewTitle, setReviewTitle] = useState("");
+
   const [IsOpend, setIsOpend] = useState(false);
 
   const handleSubmit = () => {
@@ -74,6 +76,18 @@ const ReviewPopup = ({
                 size="md"
                 color="yellow.5"
                 className="mt-1 mb-4"
+              />
+              <Textarea
+                placeholder="Title text"
+                minRows={2}
+                maxLength={50}
+                pb={7}
+                value={reviewTitle}
+                onChange={(event) => setReviewTitle(event.currentTarget.value)}
+                autosize
+                classNames={{
+                  input: "textEreaInput",
+                }}
               />
               <Textarea
                 placeholder="Review text"
