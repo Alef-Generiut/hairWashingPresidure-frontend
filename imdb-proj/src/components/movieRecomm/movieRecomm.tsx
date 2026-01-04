@@ -4,21 +4,16 @@ import { StarIcon } from "@phosphor-icons/react";
 import ReviewPopup from "../reviewPopup/ReviewPopup";
 import "./movieRecomm.css";
 import { Link } from "react-router-dom";
-import { movie } from "../../types/types";
+import { movieOptions } from "../../types/types";
 interface movieRecomm {
-  movie: movie;
+  movie: movieOptions;
 }
 const MovieRecomm = ({ movie }: movieRecomm) => {
   return (
-    <Box className="recommContainer" >
+    <Box className="recommContainer">
       <Box component={Link} to={`/movie/${movie.id}`}>
         <Box className="imgHolder">
-          <Image
-            src={image}
-            className="image"
-            radius="md"
-            fit="cover"
-          />
+          <Image src={image} className="image" radius="md" fit="cover" />
         </Box>
         <Text className="recommName" mt={3} ta="start">
           {movie.name}
@@ -30,7 +25,7 @@ const MovieRecomm = ({ movie }: movieRecomm) => {
           <span>{movie.avgRating}</span>
         </Box>
         <Box className="itemBox">
-          <ReviewPopup />
+          <ReviewPopup movieId={movie.id} title={movie.name} />
         </Box>
       </Box>
     </Box>

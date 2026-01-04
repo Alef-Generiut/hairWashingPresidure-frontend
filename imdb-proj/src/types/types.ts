@@ -2,8 +2,16 @@ export type user = {
   id: string;
   username: string;
   password: string;
-  gmail: string;
+  mail: string;
 };
+
+export type userDto = Omit<user, "id">;
+
+export type genre = {
+  id: number;
+  name: string;
+};
+
 export type movie = {
   id: string;
   name: string;
@@ -11,20 +19,36 @@ export type movie = {
   bgPhoto: string;
   length: number;
   plot: string;
-  releaseYear: number;
+  releaseDate: Date;
   genres: genre[];
-  avgRating:number;
+  avgRating: number;
 };
+export type MovieApiResponse = Omit<movie, "releaseDate"> & {
+  releaseDate: string;
+};
+
+export type posterMovie = Omit<
+  movie,
+  "length" | "plot" | "releaseDate" | "genres"
+>;
+
+export type movieOptions = Omit<posterMovie, "bgPhoto">;
+
+export type featuredChoice = Omit<movieOptions, "avgRating">;
+
 export type review = {
   id: string;
   rating: number;
   title: string;
   content: string;
   username: string;
-  movieId: string;
   createdAt: Date;
 };
-export type genre = {
-  id: number;
-  name: string;
+
+export type reviewDto = Omit<review, "id" | "createdAt">;
+
+export type addReviewDto = Omit<reviewDto,"username"> & { movieId: string, userId:string };
+
+export type ReviewApiResponse = Omit<review, "createdAt"> & {
+  createdat: string;
 };

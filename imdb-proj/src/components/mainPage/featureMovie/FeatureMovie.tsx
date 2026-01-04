@@ -4,15 +4,22 @@ import { Box, Image, Text } from "@mantine/core";
 import image from "../../../assets/enternal-logo.jpg";
 import FeatureMovieDesc from "../featureMovieDesc/FeatureMovieDesc.tsx";
 import FeatureChoice from "../featureChoice/FeatureChoice.tsx";
-import { movies } from "../../../hardCodedData.ts";
 import { Link } from "react-router-dom";
-import { movie } from "../../../types/types.ts";
+import { featuredChoice, movie } from "../../../types/types.ts";
+import { useEffect, useState } from "react";
+import MovieAPI from "../../../api/movie.api.ts";
 
 interface homePageMovie {
   movie: movie;
 }
 
 const HomePageMovie = ({ movie }: homePageMovie) => {
+  const [featureChoices, setFeatureChoices] = useState<featuredChoice[]>([]);
+
+  useEffect(() => {
+    MovieAPI.getFeatured().then(setFeatureChoices).catch(console.error);
+  },[]);
+
   return (
     <Box className="headlineMovie">
       <Box className="mainRow">
@@ -23,11 +30,7 @@ const HomePageMovie = ({ movie }: homePageMovie) => {
         >
           <Box>
             <Box className="imageHolder">
-              <Image
-                src={imageTemp}
-                className="frontImage"
-                fit="cover"
-              />
+              <Image src={imageTemp} className="frontImage" fit="cover" />
             </Box>
 
             <Box className="contentRow">
@@ -42,7 +45,7 @@ const HomePageMovie = ({ movie }: homePageMovie) => {
             </Text>
           </Box>
           <Box>
-            {movies.slice(0, 3).map((movie) => (
+            {featureChoices.map((movie) => (
               <FeatureChoice movieName={movie.name} movieId={movie.id} />
             ))}
           </Box>

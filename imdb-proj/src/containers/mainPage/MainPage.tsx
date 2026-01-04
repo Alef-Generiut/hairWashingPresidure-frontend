@@ -1,12 +1,19 @@
 import { Flex, Box, Text } from "@mantine/core";
 import HomePageMovie from "../../components/mainPage/featureMovie/FeatureMovie";
 import MovieRecomm from "../../components/movieRecomm/movieRecomm";
-import { movies } from "../../hardCodedData";
-import { movie } from "../../types/types";
+import { movie, movieOptions } from "../../types/types";
 import "./MainPage.css";
+import { useEffect, useState } from "react";
+import MovieAPI from "../../api/movie.api";
+import { NOT_FOUND_MOVIE } from "../../constants/constants";
 
 const MainPage = () => {
-  const featureMovie: movie = movies[0];
+  const [featureMovie, setFeatureMovie] = useState<movie>(NOT_FOUND_MOVIE);
+  const [topRatedMovies, setTopRatedMovies] = useState<movieOptions[]>([]);
+  useEffect(() => {
+    MovieAPI.getLatest().then(setFeatureMovie).catch(console.error);
+    MovieAPI.getTopRated().then(setTopRatedMovies).catch(console.error);
+  }, []);
   return (
     <>
       <Box className="lowTaperFade" />
@@ -17,7 +24,7 @@ const MainPage = () => {
         <Box className="mr-[61vw] mb-[3vh]">
           <Text>
             <span className="text-yellow-400 mr-4">●</span>
-            Picked For You
+            Top Rated Movies
           </Text>
         </Box>
         <Flex
@@ -28,9 +35,9 @@ const MainPage = () => {
           wrap="nowrap"
           className="w-[75vw] mx-auto "
         >
-          {movies.map((movie) => (
+          {topRatedMovies.map((movie) => (
             <Box className="w-[14.667%]">
-              <MovieRecomm movie={movie}  />
+              <MovieRecomm movie={movie} />
             </Box>
           ))}
         </Flex>

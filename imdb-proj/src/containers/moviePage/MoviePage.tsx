@@ -1,32 +1,41 @@
 import { Box, Divider, Flex, TableOfContents } from "@mantine/core";
-import { movie, review } from "../../types/types";
+import { movie, movieOptions, review } from "../../types/types";
 import "./MoviePage.css";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import OverviewHead from "../../components/moviePage/overviewHead/OverviewHead";
 import OverviewPhotos from "../../components/moviePage/overviewPhotos/OverviewPhotos";
 import OverviewDesc from "../../components/moviePage/overviewDesc/OverviewDesc";
 import UserReview from "../../components/moviePage/userReview/UserReview";
 import MovieRecomm from "../../components/movieRecomm/movieRecomm";
 import { useParams } from "react-router-dom";
-import { movies } from "../../hardCodedData";
+import ReviewAPI from "../../api/review.api";
+import MovieAPI from "../../api/movie.api";
+import { NOT_FOUND_MOVIE } from "../../constants/constants";
 
 const STICKY_OFFSET = 80;
 
-const mockReview: review = {
-  id: "rev_8f3c2a91",
-  rating: 9,
-  title: "A Visceral, Grand-Scale Sequel That Raises the Bar",
-  content:
-    "Dune: Part Two expands everything that made the first film compelling. The world feels heavier, the stakes more personal, and the imagery consistently breathtaking.aaaaaaa aaaaaaaaa aaaaaaa aaaaaaaa aaaaaaaaa aaaaaaaaaa aaaaaaaaa aaaaaaaaa aaaaaaaa aaaaaa aaaaaaa aaaaaaa aaaaaaa aaaaaaaa aaaaaa aaaaaaa aaaaaa aaaaaa aaaaa ",
-  username: "cinemaEnthusiast",
-  movieId: "movie_dune_part_two",
-  createdAt: new Date("2024-02-20T19:42:00Z"),
-};
-
 const MoviePage = () => {
+  const [reviews, setReviews] = useState<review[]>([]);
+  const [featureMovie, setFeatureMovie] = useState<movie>(NOT_FOUND_MOVIE);
+  const [movieReccoms, setMovieReccoms] = useState<movieOptions[]>([]);
   const { movieId } = useParams<{ movieId: string }>();
 
-  const movie: movie | undefined = movies.find((movie) => movie.id === movieId);
+  useEffect(() => {
+    if (movieId) {
+      ReviewAPI.get(movieId)
+        .then(setReviews)
+        .catch(console.error);
+
+      MovieAPI.getById(movieId).then(setFeatureMovie).catch(console.error);
+    }
+  }, [movieId]);
+
+  useEffect(() => {
+    MovieAPI.getReccomended(featureMovie.genres.map((genre) => genre.id))
+      .then(setMovieReccoms)
+      .catch(console.error);
+  }, [featureMovie.genres]);
+
   return (
     <Flex gap="xl" className="p-6  mt-[10vh]">
       <Box className="lowTaperFade" />
@@ -38,14 +47,18 @@ const MoviePage = () => {
           </h2>
 
           <OverviewHead
-            name={movie?.name}
-            releaseYear={movie?.releaseYear}
-            movieLength={movie?.length}
+            name={featureMovie.name}
+            releaseYear={featureMovie.releaseDate.getFullYear()}
+            movieLength={featureMovie.length}
+            movieId={movieId!}
           />
 
           <MemoizedOverviewPhotos />
 
-          <OverviewDesc genres={movie?.genres} plot={movie?.plot} />
+          <OverviewDesc
+            genres={featureMovie.genres}
+            plot={featureMovie?.plot}
+          />
         </section>
 
         <Divider my="xl" />
@@ -55,9 +68,12 @@ const MoviePage = () => {
             User Reviews
           </h2>
 
-          <Flex gap="lg">
-            <MemoizedUserReview review={mockReview} />
-            <MemoizedUserReview review={mockReview} />
+          <Flex gap="lg" justify="center" align="center">
+            {reviews.length == 0
+              ? "could not find reviews"
+              : reviews.map((review: review) => (
+                  <MemoizedUserReview review={review} />
+                ))}
           </Flex>
         </section>
 
@@ -76,9 +92,9 @@ const MoviePage = () => {
             gap="md"
             className="w-[75vw] mx-auto"
           >
-            {movies.slice(0, 5).map((movie) => (
+            {movieReccoms.map((movie) => (
               <Box className="w-[18%]">
-                <MemoizedMovieRecomm movie={movie}  />
+                <MemoizedMovieRecomm movie={movie} />
               </Box>
             ))}
           </Flex>

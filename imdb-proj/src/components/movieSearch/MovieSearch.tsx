@@ -1,20 +1,24 @@
-import { Box, Flex, Title, Text, Button } from "@mantine/core";
+import { Box, Flex, Title, Text } from "@mantine/core";
 import { Link, useSearchParams } from "react-router-dom";
-import { movies } from "../../hardCodedData";
 import MovieRecomm from "../movieRecomm/movieRecomm";
 import "./movieSearch.css";
+import { useEffect, useState } from "react";
+import MovieAPI from "../../api/movie.api";
+import { movieOptions } from "../../types/types";
 
 const MovieSearch = () => {
   const [searchParams] = useSearchParams();
+  const [searchedMovies, setSearchedMovies] = useState<movieOptions[]>([]);
   const search = searchParams.get("q")?.toLowerCase() || "";
 
-  const filteredMovies = movies.filter((movie) =>
-    movie.name.toLowerCase().includes(search)
-  );
+  useEffect(() => {
+    MovieAPI.searchMovies(search).then(setSearchedMovies).catch(console.error);
+  }, [search]);
+
   return (
     <Box>
       <Box className="lowTaperFade" />;
-      {filteredMovies.length != 0 ? (
+      {searchedMovies.length != 0 ? (
         <Box className="titleContainer">
           <Title>results for: {search}</Title>
         </Box>
@@ -33,9 +37,9 @@ const MovieSearch = () => {
         gap="md"
         className="w-[90vw] mx-auto"
       >
-        {filteredMovies.map((movie) => (
+        {searchedMovies.map((movie) => (
           <Box className="w-[18%]">
-          <MovieRecomm movie={movie} />
+            <MovieRecomm movie={movie} />
           </Box>
         ))}
       </Flex>

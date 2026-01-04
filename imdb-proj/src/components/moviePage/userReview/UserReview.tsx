@@ -18,20 +18,18 @@ const UserReview = ({ review }: userReview) => {
         </Box>
       </Box>
       <Box className="mb-3">
-        <Title order={4}   title={review.title}>
+        <Title order={4} title={review.title}>
           {review.title}
         </Title>
       </Box>
       <Box className="contentHolder">
-        <Text  size="xs" c="yellow.2">{review.username}</Text>
+        <Text size="xs" c="yellow.2">
+          {review.username}
+        </Text>
         <span className="mx-2">•</span>
-        <Text  size="xs">{review.createdAt.toLocaleDateString()}</Text>
+        <Text size="xs">{review.createdAt.toLocaleDateString()}</Text>
       </Box>
-      <Text
-        className="content "
-      >
-        {review.content}
-      </Text>
+      <Text className="content ">{review.content}</Text>
     </Box>
   );
 };

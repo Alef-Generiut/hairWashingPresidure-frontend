@@ -11,24 +11,45 @@ import {
 } from "@mantine/core";
 import { PlusIcon } from "@phosphor-icons/react";
 import { StarIcon } from "@phosphor-icons/react";
+import { addReviewDto } from "../../types/types";
+import ReviewAPI from "../../api/review.api";
 
 interface reviewPopup {
-  title?: string;
+  title: string;
+  movieId: string;
 }
 
 const ReviewPopup = ({
   title = "eternal sunshine of the spottles mind",
+  movieId,
 }: reviewPopup) => {
   const [rating, setRating] = useState(0);
   const [reviewText, setReviewText] = useState("");
   const [reviewTitle, setReviewTitle] = useState("");
-
   const [IsOpend, setIsOpend] = useState(false);
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     if (rating === 0 || reviewText.trim() === "") return;
+    if (!movieId) return;
 
-    setIsOpend((opend) => !opend);
+    const reviewToAdd: addReviewDto = {
+      rating,
+      title: reviewTitle,
+      content: reviewText,
+      userId: "c52f2829-0bff-4cbc-b98b-914a70aa0fe7",
+      movieId,
+    };
+
+    try {
+      await ReviewAPI.create(reviewToAdd);
+
+      setIsOpend(false);
+      setRating(0);
+      setReviewTitle("");
+      setReviewText("");
+    } catch (err) {
+      console.error(err);
+    }
   };
 
   return (
@@ -54,7 +75,7 @@ const ReviewPopup = ({
       </Popover.Target>
       <Popover.Dropdown>
         <Card className="card" withBorder={false} px={0}>
-          <Flex justify="center" className="space-x-[1.5vw]">
+          <Flex justify="start" w="100%" className="space-x-[1.5vw]">
             <Box>
               <button
                 id="closer"
@@ -64,7 +85,7 @@ const ReviewPopup = ({
                 &times;
               </button>
             </Box>
-            <Box>
+            <Box w="92%">
               <Text size="lg" className="truncate" w="75%">
                 Review '{title}'
               </Text>
@@ -73,7 +94,7 @@ const ReviewPopup = ({
                 value={rating}
                 onChange={setRating}
                 count={10}
-                size="md"
+                size="lg"
                 color="yellow.5"
                 className="mt-1 mb-4"
               />

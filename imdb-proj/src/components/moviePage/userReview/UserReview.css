@@ -2,7 +2,7 @@
 
 @layer components {
   .reviewHolder {
-    @apply rounded-2xl bg-white/5 p-6 shadow-lg shadow-black/40 text-left;
+    @apply rounded-2xl bg-white/5 p-6 shadow-lg shadow-black/40 text-left min-w-[37vw]; 
   }
   .ratingHolder {
     @apply flex items-baseline font-semibold;

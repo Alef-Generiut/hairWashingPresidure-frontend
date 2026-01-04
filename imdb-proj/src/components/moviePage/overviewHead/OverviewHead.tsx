@@ -8,12 +8,13 @@ import {
 } from "../../../constants/constants";
 
 interface overviewHead {
-  name?: string;
-  releaseYear?: number;
-  movieLength?: number;
+  name: string;
+  releaseYear: number;
+  movieLength: number;
+  movieId:string;
 }
 
-const OverviewHead = ({ name, releaseYear, movieLength }: overviewHead) => {
+const OverviewHead = ({ name, releaseYear, movieLength,movieId = NOT_FOUND_STRING}: overviewHead) => {
   const formatMovieLength = (minutes?: number) => {
     if (!minutes) return NOT_FOUND_NUMBER;
 
@@ -42,7 +43,7 @@ const OverviewHead = ({ name, releaseYear, movieLength }: overviewHead) => {
 
       <Flex align="center" className="space-x-3">
         <Box className="reviewPopup">
-          <ReviewPopup />
+          <ReviewPopup movieId={movieId} title={name}/>
         </Box>
         <Flex align="center" className="rating">
           <StarIcon color="yellow" weight="fill" />
