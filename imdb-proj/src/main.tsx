@@ -4,6 +4,8 @@ import "./index.css";
 import App from "./containers/app/App.tsx";
 import { MantineProvider, createTheme } from "@mantine/core";
 import "@mantine/core/styles.css";
+import { Provider } from "react-redux";
+import { store } from "./store/store.ts";
 const theme = createTheme({
   components: {
     Button: {
@@ -16,7 +18,9 @@ const theme = createTheme({
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
     <MantineProvider theme={theme} defaultColorScheme="dark">
+        <Provider store={store}>
       <App />
+      </Provider>
     </MantineProvider>
   </StrictMode>
 );

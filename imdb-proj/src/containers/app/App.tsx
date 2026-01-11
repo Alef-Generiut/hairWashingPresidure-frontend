@@ -1,17 +1,35 @@
 import "./App.css";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import {
+  createBrowserRouter,
+  Navigate,
+  RouterProvider,
+} from "react-router-dom";
 import { Suspense, lazy } from "react";
 import MainPage from "../../containers/mainPage/MainPage";
 import AppLayout from "../../AppLayout";
 import { SpinnerIcon } from "@phosphor-icons/react";
 import MovieSearch from "../../components/movieSearch/MovieSearch";
-import { urlVerification } from "../../middleware/middleware";
+import {
+  urlLoginSecurityVerification,
+  urlVerification,
+} from "../../middleware/middleware";
+import Login from "../../components/login/Login";
+import SignUp from "../../components/LoginSignUp/SignUp";
 
 const MoviePage = lazy(() => import("../../containers/moviePage/MoviePage"));
 
 const router = createBrowserRouter([
   {
+    path: "/login",
+    element: <Login />,
+  },
+  {
+    path: "/sign-up",
+    element: <SignUp />,
+  },
+  {
     element: <AppLayout />,
+    loader: urlLoginSecurityVerification,
     children: [
       { path: "/", element: <MainPage /> },
       {
@@ -35,6 +53,10 @@ const router = createBrowserRouter([
         loader: urlVerification,
       },
     ],
+  },
+  {
+    path: "*",
+    element: <Navigate to="/login" replace />,
   },
 ]);
 

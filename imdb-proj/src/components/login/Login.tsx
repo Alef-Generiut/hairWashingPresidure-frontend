@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   Box,
   TextInput,
@@ -12,10 +12,13 @@ import {
   Flex,
   Paper,
 } from "@mantine/core";
-import "./login.css"
-import bgPhoto from "../../assets/loginSignupBg.jpg";
+import "./login.css";
+import bgPhoto from "../../assets/4fxxbm4opjd31.jpg";
 import imdbLogo from "../../assets/imdb-logo.png";
-import { redirect } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { login } from "../../store/auth/auth.thunk";
+import { AppDispatch, RootState } from "../../store/store";
 
 const inputStyles = {
   input: {
@@ -26,11 +29,23 @@ const inputStyles = {
 };
 
 const Login = () => {
+  const dispatch = useDispatch<AppDispatch>();
+  const { userId } = useSelector((state: RootState) => state.auth);
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
+  const navigate = useNavigate();
 
-  const handleSubmit = () => {
-    console.log({ email, password });
+  useEffect(() => {
+    if (userId) {
+      navigate("/");
+    }
+  }, [userId, navigate]);
+
+  const handleSubmit = async () => {
+    dispatch(login({ email: email, password: password }));
+
+    setEmail("");
+    setPassword("");
   };
 
   return (
@@ -106,7 +121,8 @@ const Login = () => {
                 variant="subtle"
                 size="sm"
                 c="dimmed"
-                onClick={() => redirect("/sign-up")}
+                component={Link}
+                to="/sign-up"
                 styles={{
                   root: {
                     backgroundColor: "transparent",
@@ -119,7 +135,7 @@ const Login = () => {
                   },
                 }}
               >
-                Login
+                register
               </Button>
             </Group>
           </Paper>

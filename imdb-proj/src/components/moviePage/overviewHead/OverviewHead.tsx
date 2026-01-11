@@ -11,10 +11,17 @@ interface overviewHead {
   name: string;
   releaseYear: number;
   movieLength: number;
-  movieId:string;
+  movieId: string;
+  avgRating: number;
 }
 
-const OverviewHead = ({ name, releaseYear, movieLength,movieId = NOT_FOUND_STRING}: overviewHead) => {
+const OverviewHead = ({
+  name,
+  releaseYear,
+  movieLength,
+  movieId = NOT_FOUND_STRING,
+  avgRating,
+}: overviewHead) => {
   const formatMovieLength = (minutes?: number) => {
     if (!minutes) return NOT_FOUND_NUMBER;
 
@@ -43,11 +50,11 @@ const OverviewHead = ({ name, releaseYear, movieLength,movieId = NOT_FOUND_STRIN
 
       <Flex align="center" className="space-x-3">
         <Box className="reviewPopup">
-          <ReviewPopup movieId={movieId} title={name}/>
+          <ReviewPopup movieId={movieId} title={name} />
         </Box>
         <Flex align="center" className="rating">
           <StarIcon color="yellow" weight="fill" />
-          <Text size="medium">{8.7}/10</Text>
+          <Text size="medium">{avgRating}/10</Text>
         </Flex>
       </Flex>
     </Flex>

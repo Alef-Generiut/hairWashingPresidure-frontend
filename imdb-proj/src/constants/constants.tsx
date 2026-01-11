@@ -14,3 +14,5 @@ export const NOT_FOUND_MOVIE: movie = {
   genres: [{ id: NOT_FOUND_NUMBER, name: NOT_FOUND_STRING }],
   avgRating: NOT_FOUND_NUMBER,
 };
+
+export const EMAIL_REGEX = /^[a-zA-Z0-9._%+-]+@([a-zA-Z0-9-]+\.)+[a-zA-Z]{2,}$/;

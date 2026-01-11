@@ -6,13 +6,18 @@ import {
 } from "@phosphor-icons/react/dist/ssr";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { AppDispatch, useAppSelector } from "../store/store";
+import { logout } from "../store/auth/auth.slice";
 
 const Header = () => {
+  const dispatch = useDispatch<AppDispatch>();
+  const userId = useAppSelector((state) => state.auth.userId);
   const navigate = useNavigate();
   const [searchBarInput, setSearchBarInput] = useState<string>("");
 
   const submitSearch = (input: string) => {
-    if (!input.trim()) return;
+    if (!input.trim() || !userId) return;
     navigate(`/search?q=${encodeURIComponent(input)}`);
   };
 
@@ -25,7 +30,7 @@ const Header = () => {
       direction="row"
       wrap="wrap"
     >
-      <Box component={Link} to={`/`}>
+      <Box component={Link} to={userId ? `/` : "/login"}>
         <Image src={imdbLogo} w={"3.5vw"} radius="sm" />
       </Box>
       <form
@@ -51,7 +56,13 @@ const Header = () => {
         />
       </form>
       <Box className="hidden md:block">
-        <Button variant="transparent">
+        <Button
+          variant="transparent"
+          onClick={() => {
+            dispatch(logout());
+            navigate("/login");
+          }}
+        >
           <SignOutIcon size={"1.5vw"} weight="light" />
           Logout
         </Button>

@@ -36,7 +36,7 @@ const MainPage = () => {
           className="w-[75vw] mx-auto "
         >
           {topRatedMovies.map((movie) => (
-            <Box className="w-[14.667%]">
+            <Box key={movie.id} className="w-[14.667%]">
               <MovieRecomm movie={movie} />
             </Box>
           ))}

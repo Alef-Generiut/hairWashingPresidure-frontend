@@ -22,9 +22,7 @@ const MoviePage = () => {
 
   useEffect(() => {
     if (movieId) {
-      ReviewAPI.get(movieId)
-        .then(setReviews)
-        .catch(console.error);
+      ReviewAPI.get(movieId).then(setReviews).catch(console.error);
 
       MovieAPI.getById(movieId).then(setFeatureMovie).catch(console.error);
     }
@@ -51,6 +49,7 @@ const MoviePage = () => {
             releaseYear={featureMovie.releaseDate.getFullYear()}
             movieLength={featureMovie.length}
             movieId={movieId!}
+            avgRating={featureMovie.avgRating}
           />
 
           <MemoizedOverviewPhotos />
@@ -72,7 +71,7 @@ const MoviePage = () => {
             {reviews.length == 0
               ? "could not find reviews"
               : reviews.map((review: review) => (
-                  <MemoizedUserReview review={review} />
+                  <MemoizedUserReview key={review.id} review={review} />
                 ))}
           </Flex>
         </section>
@@ -93,7 +92,7 @@ const MoviePage = () => {
             className="w-[75vw] mx-auto"
           >
             {movieReccoms.map((movie) => (
-              <Box className="w-[18%]">
+              <Box key={movie.id} className="w-[18%]">
                 <MemoizedMovieRecomm movie={movie} />
               </Box>
             ))}
@@ -113,8 +112,22 @@ const MoviePage = () => {
             offset: STICKY_OFFSET,
           }}
           getControlProps={({ data, active }) => ({
-            component: "a",
-            href: `#${data.id}`,
+            component: "button",
+            type: "button",
+            onClick: () => {
+              const element = document.getElementById(data.id);
+              if (!element) return;
+
+              const top =
+                element.getBoundingClientRect().top +
+                window.scrollY -
+                STICKY_OFFSET;
+
+              window.scrollTo({
+                top,
+                behavior: "smooth",
+              });
+            },
             className: `
               tableOfContentGeneral
               ${active ? "tableOfContentActive" : ""}

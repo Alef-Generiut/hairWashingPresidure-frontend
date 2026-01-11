@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   Card,
   Text,
@@ -13,6 +13,8 @@ import { PlusIcon } from "@phosphor-icons/react";
 import { StarIcon } from "@phosphor-icons/react";
 import { addReviewDto } from "../../types/types";
 import ReviewAPI from "../../api/review.api";
+import { useSelector } from "react-redux";
+import { RootState } from "../../store/store";
 
 interface reviewPopup {
   title: string;
@@ -27,7 +29,24 @@ const ReviewPopup = ({
   const [reviewText, setReviewText] = useState("");
   const [reviewTitle, setReviewTitle] = useState("");
   const [IsOpend, setIsOpend] = useState(false);
+  const [userReview, setUserReview] = useState<number | null>(null);
+  const { userId } = useSelector((state: RootState) => state.auth);
 
+  const resetComment = () => {
+    setIsOpend(false);
+    setRating(0);
+    setReviewTitle("");
+    setReviewText("");
+  };
+
+  useEffect(() => resetComment, [movieId]);
+  useEffect(() => {
+    if (userId) {
+      ReviewAPI.getByIds(userId, movieId)
+        .then((res) => setUserReview(res.rating))
+        .catch(console.error);
+    }
+  }, [movieId, userId]);
   const handleSubmit = async () => {
     if (rating === 0 || reviewText.trim() === "") return;
     if (!movieId) return;
@@ -36,23 +55,25 @@ const ReviewPopup = ({
       rating,
       title: reviewTitle,
       content: reviewText,
-      userId: "c52f2829-0bff-4cbc-b98b-914a70aa0fe7",
+      userId: "e4660f5c-79e9-4826-8bce-f1806a932ef3",
       movieId,
     };
 
     try {
       await ReviewAPI.create(reviewToAdd);
 
-      setIsOpend(false);
-      setRating(0);
-      setReviewTitle("");
-      setReviewText("");
+      resetComment();
     } catch (err) {
       console.error(err);
     }
   };
 
-  return (
+  return userReview !== null ? (
+    <Box className="flex row-auto text-sm space-x-2">
+      <StarIcon className="mt-1.5" size={15} color="#ffff00" weight="fill" />
+      <Text>{userReview}</Text>
+    </Box>
+  ) : (
     <Popover
       width={450}
       trapFocus

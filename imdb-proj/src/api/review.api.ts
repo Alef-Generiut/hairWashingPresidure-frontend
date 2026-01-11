@@ -10,6 +10,8 @@ const API = axios.create({
 });
 
 const ReviewAPI = {
+  getByIds: (userId: string, movieId: string) =>
+    API.post("/getRatingByIds", { userId, movieId }).then((res) => res.data),
   get: async (movieId: string) => {
     const res = await API.get(`/${movieId}`);
     const data: ReviewApiResponse[] = res.data;

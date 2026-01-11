@@ -13,10 +13,13 @@ import {
   Flex,
   Paper,
 } from "@mantine/core";
-
-import bgPhoto from "../../assets/loginSignupBg.jpg";
+import z from "zod";
+import bgPhoto from "../../assets/4fxxbm4opjd31.jpg";
 import imdbLogo from "../../assets/imdb-logo.png";
-import { redirect } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { signUpUser } from "../../types/types";
+import { EMAIL_REGEX } from "../../constants/constants";
+import { UserAPI } from "../../api/user.api";
 
 const inputStyles = {
   input: {
@@ -26,17 +29,65 @@ const inputStyles = {
   },
 };
 
-const SignUp = () => {
-  const [email, setEmail] = useState<string>("");
-  const [username, setUsername] = useState<string>("");
-  const [password, setPassword] = useState<string>("");
-  const [confirmPassword, setConfirmPassword] = useState<string>("");
-  const [acceptedTerms, setAcceptedTerms] = useState<boolean>(false);
+const userScheme = z
+  .object({
+    username: z.string(),
+    mail: z.email({ pattern: EMAIL_REGEX }),
+    password: z.string(),
+    confirmPassword: z.string(),
+  })
+  .refine((data) => data.password === data.confirmPassword, {
+    message: "Passwords do not match",
+    path: ["confirmPassword"],
+  });
 
-  const handleSubmit = () => {
-    console.log({ email, username, password, confirmPassword, acceptedTerms });
+const SignUp = () => {
+  const navigate = useNavigate();
+  const [acceptedTerms, setAcceptedTerms] = useState<boolean>(false);
+  const [form, setForm] = useState<signUpUser>({
+    mail: "",
+    username: "",
+    password: "",
+    confirmPassword: "",
+  });
+
+  const handleChange = <Key extends keyof signUpUser>(
+    key: Key,
+    value: signUpUser[Key]
+  ) => {
+    setForm((prev) => ({ ...prev, [key]: value }));
   };
 
+  const handleSubmit = async () => {
+    console.log(form);
+    if (
+      userScheme.safeParse({
+        mail: form.mail,
+        username: form.username,
+        password: form.password,
+        confirmPassword: form.confirmPassword,
+      }).success
+    ) {
+      try {
+        await UserAPI.create({
+          mail: form.mail,
+          username: form.username,
+          password: form.password,
+        });
+        setForm({
+          mail: "",
+          username: "",
+          password: "",
+          confirmPassword: "",
+        });
+
+        console.log("user created successfuly");
+        navigate("/login");
+      } catch (error) {
+        console.error(error);
+      }
+    } else console.log("invalid fields");
+  };
   return (
     <Box
       w="100vw"
@@ -77,29 +128,35 @@ const SignUp = () => {
             <Stack gap="sm">
               <TextInput
                 placeholder="Email"
-                value={email}
-                onChange={(e) => setEmail(e.currentTarget.value)}
+                value={form.mail}
+                onChange={(e) => handleChange("mail", e.currentTarget.value)}
                 styles={inputStyles}
               />
 
               <TextInput
                 placeholder="Username"
-                value={username}
-                onChange={(e) => setUsername(e.currentTarget.value)}
+                value={form.username}
+                onChange={(e) =>
+                  handleChange("username", e.currentTarget.value)
+                }
                 styles={inputStyles}
               />
 
               <PasswordInput
                 placeholder="Password"
-                value={password}
-                onChange={(e) => setPassword(e.currentTarget.value)}
+                value={form.password}
+                onChange={(e) =>
+                  handleChange("password", e.currentTarget.value)
+                }
                 styles={inputStyles}
               />
 
               <PasswordInput
                 placeholder="Confirm Password"
-                value={confirmPassword}
-                onChange={(e) => setConfirmPassword(e.currentTarget.value)}
+                value={form.confirmPassword}
+                onChange={(e) =>
+                  handleChange("confirmPassword", e.currentTarget.value)
+                }
                 styles={inputStyles}
               />
 
@@ -133,7 +190,8 @@ const SignUp = () => {
                 variant="subtle"
                 size="sm"
                 c="dimmed"
-                onClick={() => redirect("/login")}
+                component={Link}
+                to="/login"
                 styles={{
                   root: {
                     backgroundColor: "transparent",
@@ -146,7 +204,7 @@ const SignUp = () => {
                   },
                 }}
               >
-                Register
+                sign in
               </Button>
             </Group>
           </Paper>
