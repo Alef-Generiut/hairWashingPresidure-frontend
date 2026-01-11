@@ -4,7 +4,6 @@ import {
   TextInput,
   PasswordInput,
   Button,
-  Checkbox,
   Stack,
   Text,
   Center,
@@ -19,7 +18,8 @@ import imdbLogo from "../../assets/imdb-logo.png";
 import { Link, useNavigate } from "react-router-dom";
 import { signUpUser } from "../../types/types";
 import { EMAIL_REGEX } from "../../constants/constants";
-import { UserAPI } from "../../api/user.api";
+import axios from "axios";
+import { AuthAPI } from "../../api/auth.api";
 
 const inputStyles = {
   input: {
@@ -43,7 +43,7 @@ const userScheme = z
 
 const SignUp = () => {
   const navigate = useNavigate();
-  const [acceptedTerms, setAcceptedTerms] = useState<boolean>(false);
+  const [errorMessage, setErrorMessage] = useState("");
   const [form, setForm] = useState<signUpUser>({
     mail: "",
     username: "",
@@ -59,34 +59,28 @@ const SignUp = () => {
   };
 
   const handleSubmit = async () => {
-    console.log(form);
-    if (
-      userScheme.safeParse({
+    try {
+      userScheme.parse(form);
+
+      await AuthAPI.create({
         mail: form.mail,
         username: form.username,
         password: form.password,
-        confirmPassword: form.confirmPassword,
-      }).success
-    ) {
-      try {
-        await UserAPI.create({
-          mail: form.mail,
-          username: form.username,
-          password: form.password,
-        });
-        setForm({
-          mail: "",
-          username: "",
-          password: "",
-          confirmPassword: "",
-        });
+      });
+      setForm({
+        mail: "",
+        username: "",
+        password: "",
+        confirmPassword: "",
+      });
+      navigate("/login");
+    } catch (err) {
+      const message = axios.isAxiosError(err)
+        ? err.response?.data?.message || "Validation error"
+        : "Unexpected signUp error";
 
-        console.log("user created successfuly");
-        navigate("/login");
-      } catch (error) {
-        console.error(error);
-      }
-    } else console.log("invalid fields");
+      setErrorMessage(message);
+    }
   };
   return (
     <Box
@@ -160,14 +154,11 @@ const SignUp = () => {
                 styles={inputStyles}
               />
 
-              <Checkbox
-                label="Agree to our terms and conditions"
-                checked={acceptedTerms}
-                onChange={(e) => setAcceptedTerms(e.currentTarget.checked)}
-                styles={{
-                  label: { fontSize: "0.65rem" },
-                }}
-              />
+              {errorMessage && (
+                <Text c="red" size="sm" mt="xs">
+                  {errorMessage}
+                </Text>
+              )}
 
               <Button
                 color="yellow.5"

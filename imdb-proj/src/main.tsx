@@ -18,8 +18,8 @@ const theme = createTheme({
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
     <MantineProvider theme={theme} defaultColorScheme="dark">
-        <Provider store={store}>
-      <App />
+      <Provider store={store}>
+        <App />
       </Provider>
     </MantineProvider>
   </StrictMode>

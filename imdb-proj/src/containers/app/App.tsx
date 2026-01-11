@@ -14,7 +14,7 @@ import {
   urlVerification,
 } from "../../middleware/middleware";
 import Login from "../../components/login/Login";
-import SignUp from "../../components/LoginSignUp/SignUp";
+import SignUp from "../../components/signUp/SignUp";
 
 const MoviePage = lazy(() => import("../../containers/moviePage/MoviePage"));
 

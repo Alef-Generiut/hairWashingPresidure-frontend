@@ -1,5 +1,4 @@
 import axios from "axios";
-import { userDto, userLogin } from "../types/types";
 
 const API = axios.create({
   baseURL: `${import.meta.env.VITE_BACKEND_URL}/user`,
@@ -11,8 +10,4 @@ const API = axios.create({
 
 export const UserAPI = {
   get: (userId: string) => API.get(`/${userId}`).then((res) => res.data),
-
-  login: (loginUser: userLogin) =>
-    API.post("/login", loginUser).then((res) => res.data),
-  create: (user: userDto) => API.post("/", user).then((res) => res.data),
 };

@@ -33,6 +33,8 @@ const Login = () => {
   const { userId } = useSelector((state: RootState) => state.auth);
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
+  const [errorMessage, setErrorMessage] = useState("");
+
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -42,12 +44,15 @@ const Login = () => {
   }, [userId, navigate]);
 
   const handleSubmit = async () => {
-    dispatch(login({ email: email, password: password }));
+    try {
+      await dispatch(login({ email, password })).unwrap();
 
-    setEmail("");
-    setPassword("");
+      setEmail("");
+      setPassword("");
+    } catch (error) {
+      setErrorMessage(error as string);
+    }
   };
-
   return (
     <Box
       w="100vw"
@@ -92,13 +97,18 @@ const Login = () => {
                 onChange={(e) => setEmail(e.currentTarget.value)}
                 styles={inputStyles}
               />
-
               <PasswordInput
                 placeholder="Password"
                 value={password}
                 onChange={(e) => setPassword(e.currentTarget.value)}
                 styles={inputStyles}
               />
+
+              {errorMessage && (
+                <Text c="red" size="sm" mt="xs">
+                  {errorMessage}
+                </Text>
+              )}
 
               <Button
                 color="yellow.5"

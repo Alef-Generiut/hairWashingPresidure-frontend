@@ -51,17 +51,19 @@ const ReviewPopup = ({
     if (rating === 0 || reviewText.trim() === "") return;
     if (!movieId) return;
 
+    if (!userId) throw console.error("user not connected");
+
     const reviewToAdd: addReviewDto = {
       rating,
       title: reviewTitle,
       content: reviewText,
-      userId: "e4660f5c-79e9-4826-8bce-f1806a932ef3",
+      userId: userId,
       movieId,
     };
 
     try {
       await ReviewAPI.create(reviewToAdd);
-
+      setUserReview(reviewToAdd.rating);
       resetComment();
     } catch (err) {
       console.error(err);
