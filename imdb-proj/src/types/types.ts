@@ -7,7 +7,7 @@ export type user = {
 
 export type userDto = Omit<user, "id">;
 export type userLogin = Omit<user, "id" | "username">;
-export type signUpUser = Omit<user, "id"> & { confirmPassword: string };
+export type userSignUp = Omit<user, "id"> & { confirmPassword: string };
 
 export type genre = {
   id: number;

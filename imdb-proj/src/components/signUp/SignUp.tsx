@@ -16,7 +16,7 @@ import z from "zod";
 import bgPhoto from "../../assets/4fxxbm4opjd31.jpg";
 import imdbLogo from "../../assets/imdb-logo.png";
 import { Link, useNavigate } from "react-router-dom";
-import { signUpUser } from "../../types/types";
+import { userSignUp } from "../../types/types";
 import { EMAIL_REGEX } from "../../constants/constants";
 import axios from "axios";
 import { AuthAPI } from "../../api/auth.api";
@@ -44,16 +44,16 @@ const userScheme = z
 const SignUp = () => {
   const navigate = useNavigate();
   const [errorMessage, setErrorMessage] = useState("");
-  const [form, setForm] = useState<signUpUser>({
+  const [form, setForm] = useState<userSignUp>({
     mail: "",
     username: "",
     password: "",
     confirmPassword: "",
   });
 
-  const handleChange = <Key extends keyof signUpUser>(
+  const handleChange = <Key extends keyof userSignUp>(
     key: Key,
-    value: signUpUser[Key]
+    value: userSignUp[Key]
   ) => {
     setForm((prev) => ({ ...prev, [key]: value }));
   };
