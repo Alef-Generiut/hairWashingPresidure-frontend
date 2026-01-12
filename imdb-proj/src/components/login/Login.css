@@ -1,7 +1,0 @@
-@import "tailwindcss";
-
-@layer components {
-  .fade {
-    @apply mask-[linear-gradient(to_right,transparent_0%,black_35%)];
-  }
-}
