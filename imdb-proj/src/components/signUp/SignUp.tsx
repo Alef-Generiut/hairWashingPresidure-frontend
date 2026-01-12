@@ -12,14 +12,13 @@ import {
   Flex,
   Paper,
 } from "@mantine/core";
-import z from "zod";
 import bgPhoto from "../../assets/4fxxbm4opjd31.jpg";
 import imdbLogo from "../../assets/imdb-logo.png";
 import { Link, useNavigate } from "react-router-dom";
 import { userSignUp } from "../../types/types";
-import { EMAIL_REGEX } from "../../constants/constants";
 import axios from "axios";
 import { AuthAPI } from "../../api/auth.api";
+import { userScheme } from "../../utils";
 
 const inputStyles = {
   input: {
@@ -29,17 +28,7 @@ const inputStyles = {
   },
 };
 
-const userScheme = z
-  .object({
-    username: z.string(),
-    mail: z.email({ pattern: EMAIL_REGEX }),
-    password: z.string(),
-    confirmPassword: z.string(),
-  })
-  .refine((data) => data.password === data.confirmPassword, {
-    message: "Passwords do not match",
-    path: ["confirmPassword"],
-  });
+
 
 const SignUp = () => {
   const navigate = useNavigate();
@@ -62,10 +51,12 @@ const SignUp = () => {
     try {
       userScheme.parse(form);
 
+      const { mail, username, password } = form;
+
       await AuthAPI.create({
-        mail: form.mail,
-        username: form.username,
-        password: form.password,
+        mail,
+        username,
+        password,
       });
       setForm({
         mail: "",

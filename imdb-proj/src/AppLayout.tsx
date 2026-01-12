@@ -5,7 +5,7 @@ import { Outlet, ScrollRestoration } from "react-router-dom";
 const AppLayout = () => {
   return (
     <AppShell>
-            <ScrollRestoration />
+      <ScrollRestoration />
       <AppShell.Header>
         <Flex mih={50} justify="center" align="center">
           <Header />

@@ -23,7 +23,21 @@ const ReviewAPI = {
     return reviews;
   },
   create: (review: addReviewDto) =>
-    API.post("/", review).then((res) => res.data),
+    API.post("/", review)
+      .then((res) => {
+        return res.data;
+      })
+      .catch((err) => {
+        const status = err.response?.status;
+
+        if (status === 451) {
+          window.location.href =
+            "https://www.youtube.com/watch?v=r2fv-wji9pU&t=2m3s";
+          return;
+        }
+
+        return Promise.reject(err);
+      }),
 };
 
 export default ReviewAPI;

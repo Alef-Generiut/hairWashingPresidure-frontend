@@ -12,7 +12,6 @@ import {
   Flex,
   Paper,
 } from "@mantine/core";
-import "./login.css";
 import bgPhoto from "../../assets/4fxxbm4opjd31.jpg";
 import imdbLogo from "../../assets/imdb-logo.png";
 import { Link, useNavigate } from "react-router-dom";

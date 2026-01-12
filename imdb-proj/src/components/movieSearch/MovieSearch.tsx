@@ -18,7 +18,7 @@ const MovieSearch = () => {
   return (
     <Box>
       <Box className="lowTaperFade" />;
-      {searchedMovies.length != 0 ? (
+      {searchedMovies.length > 0 ? (
         <Box className="titleContainer">
           <Title>results for: {search}</Title>
         </Box>

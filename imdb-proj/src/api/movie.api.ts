@@ -11,17 +11,17 @@ const API = axios.create({
 });
 
 const MovieAPI = {
-getLatest: async () => {
-  const res = await API.get("/latest");
-  const data: MovieApiResponse = res.data;
+  getLatest: async () => {
+    const res = await API.get("/latest");
+    const data: MovieApiResponse = res.data;
 
-  const movie: movie = {
-    ...data,
-    releaseDate: new Date(data.releaseDate),
-  };
+    const movie: movie = {
+      ...data,
+      releaseDate: new Date(data.releaseDate),
+    };
 
-  return movie;
-},
+    return movie;
+  },
   getFeatured: () => API.get("/featured").then((res) => res.data),
 
   getTopRated: () => API.get("/top-rated").then((res) => res.data),
@@ -32,7 +32,18 @@ getLatest: async () => {
   searchMovies: (searchName: string) =>
     API.get(`/search`, {
       params: { searchName },
-    }).then((res) => res.data),
+    })
+      .then((res) => res.data)
+      .catch((err) => {
+        const status = err.response?.status;
+
+        if (status === 451) {
+          window.location.href = "https://en.wikipedia.org/wiki/Fish";
+          return;
+        }
+
+        return Promise.reject(err);
+      }),
 
   getById: async (movieId: string) => {
     const res = await API.get(`/${movieId}`);

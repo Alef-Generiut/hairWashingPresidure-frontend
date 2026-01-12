@@ -2,10 +2,8 @@ import { Flex, Box, Text } from "@mantine/core";
 import ReviewPopup from "../../reviewPopup/ReviewPopup";
 import { StarIcon } from "@phosphor-icons/react";
 import "./OverviewHead.css";
-import {
-  NOT_FOUND_NUMBER,
-  NOT_FOUND_STRING,
-} from "../../../constants/constants";
+import { NOT_FOUND_STRING } from "../../../constants/constants";
+import { formatMovieLength } from "../../../utils";
 
 interface overviewHead {
   name: string;
@@ -22,15 +20,6 @@ const OverviewHead = ({
   movieId = NOT_FOUND_STRING,
   avgRating,
 }: overviewHead) => {
-  const formatMovieLength = (minutes?: number) => {
-    if (!minutes) return NOT_FOUND_NUMBER;
-
-    const hours = Math.floor(minutes / 60);
-    const remainingMinutes = minutes % 60;
-
-    return `${hours}h ${remainingMinutes}m`;
-  };
-
   return (
     <Flex
       direction="row"

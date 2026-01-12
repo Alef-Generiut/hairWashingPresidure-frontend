@@ -63,6 +63,7 @@ const ReviewPopup = ({
 
     try {
       await ReviewAPI.create(reviewToAdd);
+
       setUserReview(reviewToAdd.rating);
       resetComment();
     } catch (err) {
