@@ -19,8 +19,23 @@ const MovieSearch = () => {
     <Box>
       <Box className="lowTaperFade" />;
       {searchedMovies.length > 0 ? (
-        <Box className="titleContainer">
-          <Title>results for: {search}</Title>
+        <Box>
+          <Box className="titleContainer">
+            <Title>results for: {search}</Title>
+          </Box>
+          <Flex
+            justify="center"
+            align="center"
+            direction="row"
+            gap="md"
+            className="w-[90vw] mx-auto"
+          >
+            {searchedMovies.map((movie) => (
+              <Box className="w-[18%]">
+                <MovieRecomm movie={movie} />
+              </Box>
+            ))}
+          </Flex>
         </Box>
       ) : (
         <Box pt={"xl"}>
@@ -30,19 +45,6 @@ const MovieSearch = () => {
           </Text>
         </Box>
       )}
-      <Flex
-        justify="center"
-        align="center"
-        direction="row"
-        gap="md"
-        className="w-[90vw] mx-auto"
-      >
-        {searchedMovies.map((movie) => (
-          <Box className="w-[18%]">
-            <MovieRecomm movie={movie} />
-          </Box>
-        ))}
-      </Flex>
     </Box>
   );
 };

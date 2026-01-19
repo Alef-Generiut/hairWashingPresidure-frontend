@@ -1,12 +1,10 @@
 import axios from "axios";
 import { addReviewDto, review, ReviewApiResponse } from "../types/types";
+import { API_HEADERS } from "../constants/constants";
 
 const API = axios.create({
   baseURL: `${import.meta.env.VITE_BACKEND_URL}/review`,
-  headers: {
-    "Content-Type": "application/json",
-    "Cache-Control": "no-cache",
-  },
+  headers: API_HEADERS,
 });
 
 const ReviewAPI = {

@@ -18,14 +18,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { login } from "../../store/auth/auth.thunk";
 import { AppDispatch, RootState } from "../../store/store";
-
-const inputStyles = {
-  input: {
-    backgroundColor: "white",
-    color: "black",
-    fontSize: "0.65rem",
-  },
-};
+import { inputStyles } from "../../configs";
 
 const Login = () => {
   const dispatch = useDispatch<AppDispatch>();

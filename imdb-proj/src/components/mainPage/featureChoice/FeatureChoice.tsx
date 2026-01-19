@@ -3,6 +3,7 @@ import image from "../../../assets/enternal-logo.jpg";
 import { Box, Image, Text } from "@mantine/core";
 import "./FeatureChoice.css";
 import { Link } from "react-router-dom";
+import { PLACEHOLDER } from "../../../constants/constants";
 interface featureChoice {
   bgPhoto?: string;
   posterPhoto?: string;
@@ -11,7 +12,7 @@ interface featureChoice {
 }
 
 const FeatureChoice = ({
-  movieName = "placeHolder",
+  movieName = PLACEHOLDER,
   movieId,
 }: featureChoice) => {
   return (

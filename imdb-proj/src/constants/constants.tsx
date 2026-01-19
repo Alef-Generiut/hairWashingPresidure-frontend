@@ -16,3 +16,14 @@ export const NOT_FOUND_MOVIE: movie = {
 };
 
 export const EMAIL_REGEX = /^[a-zA-Z0-9._%+-]+@([a-zA-Z0-9-]+\.)+[a-zA-Z]{2,}$/;
+
+export const API_HEADERS = {
+  "Content-Type": "application/json",
+  "Cache-Control": "no-cache",
+};
+
+export const PLACEHOLDER = "placeHolder";
+
+export const STICKY_OFFSET = 80;
+
+export const TITLE ="PlaceHolder Title"

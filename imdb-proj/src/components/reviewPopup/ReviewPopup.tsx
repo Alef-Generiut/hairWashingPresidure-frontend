@@ -15,6 +15,7 @@ import { addReviewDto } from "../../types/types";
 import ReviewAPI from "../../api/review.api";
 import { useSelector } from "react-redux";
 import { RootState } from "../../store/store";
+import { TITLE } from "../../constants/constants";
 
 interface reviewPopup {
   title: string;
@@ -22,7 +23,7 @@ interface reviewPopup {
 }
 
 const ReviewPopup = ({
-  title = "eternal sunshine of the spottles mind",
+  title = TITLE,
   movieId,
 }: reviewPopup) => {
   const [rating, setRating] = useState(0);
@@ -88,7 +89,7 @@ const ReviewPopup = ({
     >
       <Popover.Target>
         <button
-          className="flex row-auto text-sm"
+          className="flex row-auto text-sm cursor-pointer"
           onClick={() => setIsOpend((o) => !o)}
         >
           <StarIcon className="mt-[0.5vh]" size={13} />

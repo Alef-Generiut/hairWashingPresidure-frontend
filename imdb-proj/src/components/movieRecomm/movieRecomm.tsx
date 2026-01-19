@@ -5,10 +5,8 @@ import ReviewPopup from "../reviewPopup/ReviewPopup";
 import "./movieRecomm.css";
 import { Link } from "react-router-dom";
 import { movieOptions } from "../../types/types";
-interface movieRecomm {
-  movie: movieOptions;
-}
-const MovieRecomm = ({ movie }: movieRecomm) => {
+
+const MovieRecomm = ({ movie }: { movie: movieOptions }) => {
   return (
     <Box className="recommContainer">
       <Box component={Link} to={`/movie/${movie.id}`}>

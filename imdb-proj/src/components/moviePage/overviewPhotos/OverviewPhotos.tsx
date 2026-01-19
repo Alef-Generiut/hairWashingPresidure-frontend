@@ -3,12 +3,7 @@ import movieImage from "../../../assets/eternal-sunshine-of-the-spotless-mind.jp
 import posterImage from "../../../assets/enternal-logo.jpg";
 import "./overviewPhotos.css";
 
-interface overviewPhotos {
-  posterImage: string;
-  movieImage: string;
-}
-
-const OverviewPhotos = (/*{ posterImage, movieImage }: overviewPhotos*/) => {
+const OverviewPhotos = () => {
   return (
     <Flex className="w-full gap-6">
       <Box className="posterImage">

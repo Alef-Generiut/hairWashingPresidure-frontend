@@ -10,9 +10,8 @@ import MovieRecomm from "../../components/movieRecomm/movieRecomm";
 import { useParams } from "react-router-dom";
 import ReviewAPI from "../../api/review.api";
 import MovieAPI from "../../api/movie.api";
-import { NOT_FOUND_MOVIE } from "../../constants/constants";
+import { NOT_FOUND_MOVIE, STICKY_OFFSET } from "../../constants/constants";
 
-const STICKY_OFFSET = 80;
 
 const MoviePage = () => {
   const [reviews, setReviews] = useState<review[]>([]);
@@ -85,6 +84,7 @@ const MoviePage = () => {
           </Box>
 
           <Flex
+            pt="md"
             justify="center"
             align="center"
             direction="row"

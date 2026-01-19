@@ -19,16 +19,7 @@ import { userSignUp } from "../../types/types";
 import axios from "axios";
 import { AuthAPI } from "../../api/auth.api";
 import { userScheme } from "../../utils";
-
-const inputStyles = {
-  input: {
-    backgroundColor: "white",
-    color: "black",
-    fontSize: "0.65rem",
-  },
-};
-
-
+import { inputStyles } from "../../configs";
 
 const SignUp = () => {
   const navigate = useNavigate();

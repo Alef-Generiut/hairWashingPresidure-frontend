@@ -1,13 +1,11 @@
 import axios from "axios";
 import { MovieApiResponse } from "../types/types";
 import { movie } from "../types/types";
+import { API_HEADERS } from "../constants/constants";
 
 const API = axios.create({
   baseURL: `${import.meta.env.VITE_BACKEND_URL}/movie`,
-  headers: {
-    "Content-Type": "application/json",
-    "Cache-Control": "no-cache",
-  },
+  headers: API_HEADERS,
 });
 
 const MovieAPI = {
