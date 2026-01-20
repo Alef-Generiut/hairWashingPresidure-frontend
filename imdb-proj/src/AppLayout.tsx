@@ -1,5 +1,5 @@
 import { AppShell, Flex } from "@mantine/core";
-import Header from "./components/Header";
+import Header from "./components/Navbar";
 import { Outlet, ScrollRestoration } from "react-router-dom";
 
 const AppLayout = () => {

@@ -1,11 +1,11 @@
 import { Box, Divider, Flex, TableOfContents } from "@mantine/core";
 import { movie, movieOptions, review } from "../../types/types";
-import "./MoviePage.css";
+import "./Overview.css";
 import React, { useEffect, useState } from "react";
-import OverviewHead from "../../components/moviePage/overviewHead/OverviewHead";
-import OverviewPhotos from "../../components/moviePage/overviewPhotos/OverviewPhotos";
-import OverviewDesc from "../../components/moviePage/overviewDesc/OverviewDesc";
-import UserReview from "../../components/moviePage/userReview/UserReview";
+import OverviewHead from "../../components/overview/overviewHead/OverviewHead";
+import OverviewPhotos from "../../components/overview/overviewPhotos/OverviewPhotos";
+import OverviewDesc from "../../components/overview/overviewDesc/OverviewDesc";
+import UserReview from "../../components/overview/userReview/UserReview";
 import MovieRecomm from "../../components/movieRecomm/movieRecomm";
 import { useParams } from "react-router-dom";
 import ReviewAPI from "../../api/review.api";
@@ -44,7 +44,7 @@ const MoviePage = () => {
           </h2>
 
           <OverviewHead
-            name={featureMovie.name}
+            movieName={featureMovie.name}
             releaseYear={featureMovie.releaseDate.getFullYear()}
             movieLength={featureMovie.length}
             movieId={movieId!}

@@ -1,5 +1,5 @@
 import { Flex, Box, Text } from "@mantine/core";
-import HomePageMovie from "../../components/mainPage/featureMovie/FeatureMovie";
+import HomePageMovie from "../../components/featureMovie/featureMovie/FeatureMovie";
 import MovieRecomm from "../../components/movieRecomm/movieRecomm";
 import { movie, movieOptions } from "../../types/types";
 import "./MainPage.css";

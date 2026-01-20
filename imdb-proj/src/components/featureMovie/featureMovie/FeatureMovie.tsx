@@ -34,7 +34,7 @@ const HomePageMovie = ({ movie }: homePageMovie) => {
             </Box>
 
             <Box className="contentRow">
-              <FeatureMovieDesc image={image} text={movie.name} />
+              <FeatureMovieDesc image={image} movieName={movie.name} />
             </Box>
           </Box>
         </Box>

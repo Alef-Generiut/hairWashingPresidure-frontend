@@ -31,7 +31,6 @@ const OverviewDesc = ({
 
       <Flex direction="row" className="items-start">
         <Box className="plotHeadline">Plot</Box>
-
         <Box className="plot">{plot}</Box>
       </Flex>
     </Box>

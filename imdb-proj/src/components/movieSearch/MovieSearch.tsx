@@ -9,11 +9,11 @@ import { movieOptions } from "../../types/types";
 const MovieSearch = () => {
   const [searchParams] = useSearchParams();
   const [searchedMovies, setSearchedMovies] = useState<movieOptions[]>([]);
-  const search = searchParams.get("q")?.toLowerCase() || "";
+  const query = searchParams.get("q")?.toLowerCase() || "";
 
   useEffect(() => {
-    MovieAPI.searchMovies(search).then(setSearchedMovies).catch(console.error);
-  }, [search]);
+    MovieAPI.searchMovies(query).then(setSearchedMovies).catch(console.error);
+  }, [query]);
 
   return (
     <Box>
@@ -21,7 +21,7 @@ const MovieSearch = () => {
       {searchedMovies.length > 0 ? (
         <Box>
           <Box className="titleContainer">
-            <Title>results for: {search}</Title>
+            <Title>results for: {query}</Title>
           </Box>
           <Flex
             justify="center"
@@ -39,7 +39,7 @@ const MovieSearch = () => {
         </Box>
       ) : (
         <Box pt={"xl"}>
-          <Text size="xl">couldnt find results for {search}</Text>
+          <Text size="xl">couldn't find results for {query}</Text>
           <Text component={Link} to={`/`} size="xl" td="underline" c="blue">
             press here to return home
           </Text>

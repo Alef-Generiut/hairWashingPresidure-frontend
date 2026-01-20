@@ -6,7 +6,7 @@ import { NOT_FOUND_STRING } from "../../../constants/constants";
 import { formatMovieLength } from "../../../utils";
 
 interface overviewHead {
-  name: string;
+  movieName: string;
   releaseYear: number;
   movieLength: number;
   movieId: string;
@@ -14,7 +14,7 @@ interface overviewHead {
 }
 
 const OverviewHead = ({
-  name,
+  movieName,
   releaseYear,
   movieLength,
   movieId = NOT_FOUND_STRING,
@@ -28,7 +28,7 @@ const OverviewHead = ({
       className="w-full mb-6"
     >
       <Box>
-        <Text fz={40}>{name}</Text>
+        <Text fz={40}>{movieName}</Text>
 
         <Text className=" movieLength" fz={12} c="gray.6">
           {releaseYear ?? NOT_FOUND_STRING}
@@ -39,7 +39,7 @@ const OverviewHead = ({
 
       <Flex align="center" className="space-x-3">
         <Box className="reviewPopup">
-          <ReviewPopup movieId={movieId} title={name} />
+          <ReviewPopup movieId={movieId} title={movieName} />
         </Box>
         <Flex align="center" className="rating">
           <StarIcon color="yellow" weight="fill" />

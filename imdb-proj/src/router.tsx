@@ -11,7 +11,7 @@ import {
 import Login from "./components/login/Login";
 import SignUp from "./components/signUp/SignUp";
 
-const MoviePage = lazy(() => import("./containers/moviePage/MoviePage"));
+const MoviePage = lazy(() => import("./containers/overview/Overview"));
 
 export const router = createBrowserRouter([
   {
